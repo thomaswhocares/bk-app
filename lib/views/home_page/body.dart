@@ -24,7 +24,7 @@ class BodyState extends State<Body> {
     return new Scaffold(
         body: new SafeArea(
       child: new Container(
-        decoration: new BoxDecoration(color: Color.fromARGB(255, 41, 41, 41)),
+        decoration: new BoxDecoration(color: colorManager.background),
         child: new Center(
           child: Padding(
             padding: EdgeInsets.all(11),
@@ -39,29 +39,29 @@ class BodyState extends State<Body> {
                       new MaterialButton(
                         child: new Icon(
                           Icons.menu,
-                          color: Colors.black,
-                          size: 70,
+                          color: colorManager.highlight,
+                          size: 55,
                         ),
-                        splashColor: Color.fromARGB(255, 226, 0, 122),
+                        splashColor: colorManager.highlight,
                         onPressed: onClick,
                       ),
                       new MaterialButton(
                         onPressed: onClick,
                         highlightColor: Colors.transparent,
-                        splashColor: Color.fromARGB(255, 226, 0, 122),
+                        splashColor: colorManager.highlight,
                         child: new SvgPicture.asset(
                           'assets/lmao.svg',
-                          height: 222,
+                          height: 150,
                           allowDrawingOutsideViewBox: true,
                         ),
                       ),
                       new MaterialButton(
                         child: new Icon(
                           Icons.account_circle,
-                          color: Colors.black,
-                          size: 70,
+                          color: colorManager.highlight,
+                          size: 55,
                         ),
-                        splashColor: Color.fromARGB(255, 226, 0, 122),
+                        splashColor: colorManager.highlight,
                         onPressed: onClick,
                       ),
                     ],
@@ -70,7 +70,8 @@ class BodyState extends State<Body> {
                 Expanded(
                   child: Container(
                     decoration: new BoxDecoration(
-                        color: Color.fromARGB(255, 70, 70, 70)),
+                      color: colorManager.background,
+                    ),
                     child: Column(
                       children: <Widget>[
                         new MainMenuEntry(
