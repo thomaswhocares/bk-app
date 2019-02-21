@@ -23,60 +23,74 @@ class BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: colorManager.background,),
+      decoration: BoxDecoration(
+        color: colorManager.background,
+      ),
       child: SafeArea(
         child: Scaffold(
           backgroundColor: colorManager.background,
           body: Column(
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Expanded(
+                  child: Column(
                 children: <Widget>[
-                  RaisedButton(
-                    shape: CircleBorder(side: BorderSide(style: BorderStyle.solid,color: colorManager.highlight)),
-                    color: Colors.transparent,
-                    child: Icon(
-                      Icons.menu,
-                      color: colorManager.highlight,
-                    ),
-                    splashColor: colorManager.highlight,
-                    onPressed: onClick,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      RaisedButton(
+                        shape: CircleBorder(
+                            side: BorderSide(
+                                style: BorderStyle.solid,
+                                color: colorManager.highlight)),
+                        color: Colors.black,
+                        child: Icon(
+                          Icons.menu,
+                          color: colorManager.highlight,
+                        ),
+                        splashColor: colorManager.highlight,
+                        onPressed: onClick,
+                      ),
+                      RaisedButton(
+                        shape: CircleBorder(
+                            side: BorderSide(
+                                style: BorderStyle.solid,
+                                color: colorManager.highlight)),
+                        color: Colors.black,
+                        child: Icon(
+                          Icons.account_circle,
+                          color: colorManager.highlight,
+                        ),
+                        splashColor: colorManager.highlight,
+                        onPressed: onClick,
+                      ),
+                    ],
                   ),
-                  RaisedButton(
-                    shape: CircleBorder(side: BorderSide(style: BorderStyle.solid,color: colorManager.highlight)),
-                    color: Colors.transparent,
-                    child: Icon(
-                      Icons.account_circle,
-                      color: colorManager.highlight,
-                    ),
-                    splashColor: colorManager.highlight,
-                    onPressed: onClick,
-                  ),
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  RaisedButton(
+                  Expanded(child: RaisedButton(
                     color: Colors.transparent,
                     elevation: 0,
-                    shape: CircleBorder(side: BorderSide(style: BorderStyle.none)),
+                    shape:
+                    CircleBorder(side: BorderSide(style: BorderStyle.none)),
                     onPressed: onClick,
                     highlightColor: Colors.transparent,
                     splashColor: colorManager.highlight,
                     child: SvgPicture.asset(
                       'assets/lmao.svg',
-                      height: 150,
-                      allowDrawingOutsideViewBox: true,
                     ),
-                  ),
-                  Text(
-                    "Berufskolleg für Gestaltung und Technik",
-                    style: TextStyle(color: colorManager.textColor
-                    ),
-                  )
+                  ),)
+
                 ],
-              )
+              )),
+              Expanded(
+                flex: 3,
+                child: Column(
+                  children: <Widget>[
+                    MainMenuEntry("Routenplaner", "/shoolPathFinder/main"),
+                    MainMenuEntry("Stundenplan", "/404"),
+                    MainMenuEntry("News", "/404"),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -84,10 +98,6 @@ class BodyState extends State<Body> {
     );
   }
 }
-
-
-
-
 
 /*Scaffold(
         body: SafeArea(
