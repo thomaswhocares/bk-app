@@ -66,29 +66,35 @@ class BodyState extends State<Body> {
                       ),
                     ],
                   ),
-                  Expanded(child: RaisedButton(
-                    color: Colors.transparent,
-                    elevation: 0,
-                    shape:
-                    CircleBorder(side: BorderSide(style: BorderStyle.none)),
-                    onPressed: onClick,
-                    highlightColor: Colors.transparent,
-                    splashColor: colorManager.highlight,
-                    child: SvgPicture.asset(
-                      'assets/lmao.svg',
+                  Expanded(
+                    child: RaisedButton(
+                      color: Colors.transparent,
+                      elevation: 0,
+                      shape: CircleBorder(
+                          side: BorderSide(style: BorderStyle.none)),
+                      onPressed: onClick,
+                      highlightColor: Colors.transparent,
+                      splashColor: colorManager.highlight,
+                      child: SvgPicture.asset(
+                        'assets/lmao.svg',
+                      ),
                     ),
-                  ),)
-
+                  )
                 ],
               )),
               Expanded(
                 flex: 3,
-                child: Column(
-                  children: <Widget>[
-                    MainMenuEntry("Routenplaner", "/shoolPathFinder/main"),
-                    MainMenuEntry("Stundenplan", "/404"),
-                    MainMenuEntry("News", "/404"),
-                  ],
+                child: Padding(
+                  padding: EdgeInsets.all(30),
+
+                  child: Column(
+                    children: <Widget>[
+                      MainMenuEntry(colorManager, "Routenplaner",
+                          "/shoolPathFinder/main"),
+                      MainMenuEntry(colorManager, "Stundenplan", "/404"),
+                      MainMenuEntry(colorManager, "News", "/404"),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -98,81 +104,3 @@ class BodyState extends State<Body> {
     );
   }
 }
-
-/*Scaffold(
-        body: SafeArea(
-      child: Container(
-        decoration: BoxDecoration(color: colorManager.background),
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.all(11),
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, 20, 0, 50),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      MaterialButton(
-                        child: Icon(
-                          Icons.menu,
-                          color: colorManager.highlight,
-                          size: 55,
-                        ),
-                        splashColor: colorManager.highlight,
-                        onPressed: onClick,
-                      ),
-                      Column(
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.all(60),),
-                          MaterialButton(
-                            onPressed: onClick,
-                            highlightColor: Colors.transparent,
-                            splashColor: colorManager.highlight,
-                            child: SvgPicture.asset(
-                              'assets/lmao.svg',
-                              height: 150,
-                              allowDrawingOutsideViewBox: true,
-                            ),
-                          ),
-                          Padding(padding: EdgeInsets.all(20),),
-                          Text("Berufskolleg für Gestaltung und Technik",style: TextStyle(color: Colors.white),)
-                        ],
-                      ),
-                      MaterialButton(
-                        child: Icon(
-                          Icons.account_circle,
-                          color: colorManager.highlight,
-                          size: 55,
-                        ),
-                        splashColor: colorManager.highlight,
-                        onPressed: onClick,
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: colorManager.background,
-                    ),
-                    child: Column(
-                      //mainAxisAlignment: MainAxisAlignment.spaceBetween
-                      children: <Widget>[
-                        Spacer(flex: 1),
-                        MainMenuEntry("Routenplaner", "/shoolPathFinder/main"),
-                        MainMenuEntry("Stundenplan", "/404"),
-                        MainMenuEntry("News", "/404"),
-                        Spacer(flex: 3)
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
-    ));
-  }*/

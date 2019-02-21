@@ -10,8 +10,8 @@ class ColorManager {
   ColorManager() {
     this._colorProfile = "dark";
     this._textColor = Color.fromARGB(255, 255, 255, 255);
-    this._background = Color.fromARGB(255, 29, 29, 29);
-    this._buttonBackground = Color.fromARGB(255, 58, 58, 59);
+    this._background = Color.fromARGB(255, 32, 21, 43);
+    this._buttonBackground = Color.fromARGB(255, 32, 21, 43);
     this._accent = Color.fromARGB(255, 58, 58, 59);
     this._highlight = Color.fromARGB(255, 226, 0, 122);
 
