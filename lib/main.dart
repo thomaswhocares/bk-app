@@ -2,16 +2,18 @@
 import 'package:flutter/material.dart';
 //views
 import 'package:bkapp/views/home_page/body.dart' as Homepage;
-import 'package:bkapp/views//schoolPathFinder_page/body.dart'
-    as SchoolPathFinder;
+import 'package:bkapp/views//schoolPathFinder_page/body.dart' as SchoolPathFinder;
 //utils
 import 'package:bkapp/utils/colorManager.dart';
+
 
 ColorManager colorManager;
 
 void main() {
   colorManager = new ColorManager();
   runApp(new MaterialApp(
+    title: "BK GUT App",
+    debugShowCheckedModeBanner: false,
     home: Homepage.Body(colorManager),
     routes: <String, WidgetBuilder>{
       "/shoolPathFinder/main": (BuildContext context) =>
@@ -19,6 +21,7 @@ void main() {
       "/404": (BuildContext context) => new ErrorPage()
     },
   ));
+
 }
 
 class ErrorPage extends StatelessWidget {

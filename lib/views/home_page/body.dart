@@ -1,10 +1,9 @@
 //system
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-//view
-import 'package:bkapp/views/home_page/navigation_widgets.dart';
-//utils
 import 'package:bkapp/utils/colorManager.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:bkapp/views/home_page/navigation_widgets.dart';
 
 class Body extends StatefulWidget {
   final ColorManager colorManager;
@@ -16,12 +15,81 @@ class Body extends StatefulWidget {
 
 class BodyState extends State<Body> {
   final ColorManager colorManager;
+
   BodyState(this.colorManager);
 
   void onClick() {}
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Container(
+      decoration: BoxDecoration(color: colorManager.background,),
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: colorManager.background,
+          body: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  RaisedButton(
+                    shape: CircleBorder(side: BorderSide(style: BorderStyle.solid,color: colorManager.highlight)),
+                    color: Colors.transparent,
+                    child: Icon(
+                      Icons.menu,
+                      color: colorManager.highlight,
+                    ),
+                    splashColor: colorManager.highlight,
+                    onPressed: onClick,
+                  ),
+                  RaisedButton(
+                    shape: CircleBorder(side: BorderSide(style: BorderStyle.solid,color: colorManager.highlight)),
+                    color: Colors.transparent,
+                    child: Icon(
+                      Icons.account_circle,
+                      color: colorManager.highlight,
+                    ),
+                    splashColor: colorManager.highlight,
+                    onPressed: onClick,
+                  ),
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  RaisedButton(
+                    color: Colors.transparent,
+                    elevation: 0,
+                    shape: CircleBorder(side: BorderSide(style: BorderStyle.none)),
+                    onPressed: onClick,
+                    highlightColor: Colors.transparent,
+                    splashColor: colorManager.highlight,
+                    child: SvgPicture.asset(
+                      'assets/lmao.svg',
+                      height: 150,
+                      allowDrawingOutsideViewBox: true,
+                    ),
+                  ),
+                  Text(
+                    "Berufskolleg für Gestaltung und Technik",
+                    style: TextStyle(color: colorManager.textColor
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+/*Scaffold(
         body: SafeArea(
       child: Container(
         decoration: BoxDecoration(color: colorManager.background),
@@ -47,7 +115,7 @@ class BodyState extends State<Body> {
                       ),
                       Column(
                         children: <Widget>[
-                          Spacer(),
+                          Padding(padding: EdgeInsets.all(60),),
                           MaterialButton(
                             onPressed: onClick,
                             highlightColor: Colors.transparent,
@@ -58,7 +126,8 @@ class BodyState extends State<Body> {
                               allowDrawingOutsideViewBox: true,
                             ),
                           ),
-                          Text("sdf")
+                          Padding(padding: EdgeInsets.all(20),),
+                          Text("Berufskolleg für Gestaltung und Technik",style: TextStyle(color: Colors.white),)
                         ],
                       ),
                       MaterialButton(
@@ -96,5 +165,4 @@ class BodyState extends State<Body> {
         ),
       ),
     ));
-  }
-}
+  }*/

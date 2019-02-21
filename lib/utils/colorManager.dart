@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class ColorManager {
   String _colorProfile;
@@ -13,6 +14,9 @@ class ColorManager {
     this._buttonBackground = Color.fromARGB(255, 58, 58, 59);
     this._accent = Color.fromARGB(255, 58, 58, 59);
     this._highlight = Color.fromARGB(255, 226, 0, 122);
+
+    FlutterStatusbarcolor.setStatusBarColor(this._background);
+    FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
   }
 
   Color get textColor => _textColor;
@@ -20,7 +24,6 @@ class ColorManager {
   Color get background => _background;
   Color get accent => _accent;
   Color get highlight => _highlight;
-  Color
 
 
   setColorProfile(String x) {
@@ -29,4 +32,5 @@ class ColorManager {
       debugPrint("sadasd");
     }
   }
+
 }
