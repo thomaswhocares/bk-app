@@ -21,23 +21,23 @@ class BodyState extends State<Body> {
   void onClick() {}
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        body: new SafeArea(
-      child: new Container(
-        decoration: new BoxDecoration(color: colorManager.background),
-        child: new Center(
+    return Scaffold(
+        body: SafeArea(
+      child: Container(
+        decoration: BoxDecoration(color: colorManager.background),
+        child: Center(
           child: Padding(
             padding: EdgeInsets.all(11),
-            child: new Column(
+            child: Column(
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 20, 0, 50),
-                  child: new Row(
+                  child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      new MaterialButton(
-                        child: new Icon(
+                      MaterialButton(
+                        child: Icon(
                           Icons.menu,
                           color: colorManager.highlight,
                           size: 55,
@@ -45,18 +45,24 @@ class BodyState extends State<Body> {
                         splashColor: colorManager.highlight,
                         onPressed: onClick,
                       ),
-                      new MaterialButton(
-                        onPressed: onClick,
-                        highlightColor: Colors.transparent,
-                        splashColor: colorManager.highlight,
-                        child: new SvgPicture.asset(
-                          'assets/lmao.svg',
-                          height: 150,
-                          allowDrawingOutsideViewBox: true,
-                        ),
+                      Column(
+                        children: <Widget>[
+                          Spacer(),
+                          MaterialButton(
+                            onPressed: onClick,
+                            highlightColor: Colors.transparent,
+                            splashColor: colorManager.highlight,
+                            child: SvgPicture.asset(
+                              'assets/lmao.svg',
+                              height: 150,
+                              allowDrawingOutsideViewBox: true,
+                            ),
+                          ),
+                          Text("sdf")
+                        ],
                       ),
-                      new MaterialButton(
-                        child: new Icon(
+                      MaterialButton(
+                        child: Icon(
                           Icons.account_circle,
                           color: colorManager.highlight,
                           size: 55,
@@ -69,15 +75,17 @@ class BodyState extends State<Body> {
                 ),
                 Expanded(
                   child: Container(
-                    decoration: new BoxDecoration(
+                    decoration: BoxDecoration(
                       color: colorManager.background,
                     ),
                     child: Column(
+                      //mainAxisAlignment: MainAxisAlignment.spaceBetween
                       children: <Widget>[
-                        new MainMenuEntry(
-                            "Routenplaner", "/shoolPathFinder/main"),
-                        new MainMenuEntry("Stundenplan", "/404"),
-                        new MainMenuEntry("News", "/404")
+                        Spacer(flex: 1),
+                        MainMenuEntry("Routenplaner", "/shoolPathFinder/main"),
+                        MainMenuEntry("Stundenplan", "/404"),
+                        MainMenuEntry("News", "/404"),
+                        Spacer(flex: 3)
                       ],
                     ),
                   ),

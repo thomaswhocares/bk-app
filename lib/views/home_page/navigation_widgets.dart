@@ -16,26 +16,29 @@ class MainMenuEntryState extends State<MainMenuEntry> {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      child: MaterialButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed(this._route);
-        },
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(0, 20, 2, 20),
-          child: new Text(
-            this._text,
-            style: TextStyle(fontSize: 32),
+    return new Padding(padding: EdgeInsets.fromLTRB(30, 60, 30, 0),
+        child:Row(
+      children: <Widget>[
+        Expanded(
+          child: Container(
+            child: MaterialButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(this._route);
+              },
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(0, 20, 2, 20),
+                child: new Text(
+                  this._text,
+                  style: TextStyle(fontSize: 32),
+                ),
+              ),
+            ),
+            decoration: BoxDecoration(
+                boxShadow: <BoxShadow>[BoxShadow(color: Colors.amber)]),
           ),
-        ),
-      ),
-      decoration: BoxDecoration(
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Color()
-          )
-        ]
-      ),
+        )
+      ],
+    )
     );
   }
 }
