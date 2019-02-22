@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:bkapp/utils/colorManager.dart' as ColorManager;
 
 class MainMenuEntry extends StatefulWidget {
   //inline constructor
@@ -28,10 +27,10 @@ class MainMenuEntryState extends State<MainMenuEntry> {
             onPressed: onPressed,
             child: Text(
               this._text,
-              style: TextStyle(color: ColorManager.textColor, fontSize: 20),
+              style: Theme.of(context).primaryTextTheme.body1,
             ),
-            highlightColor: ColorManager.highlight,
-            color: ColorManager.buttonBackground,
+            highlightColor: Theme.of(context).primaryColor,
+            color: Theme.of(context).backgroundColor,
           ),
         ),
       ],
