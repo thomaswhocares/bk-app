@@ -1,22 +1,19 @@
 //system
 import 'package:flutter/material.dart';
-import 'package:bkapp/utils/colorManager.dart';
+import 'package:bkapp/utils/colorManager.dart' as ColorManager;
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:bkapp/views/home_page/navigation_widgets.dart';
 
 class Body extends StatefulWidget {
-  final ColorManager colorManager;
-  Body(this.colorManager);
+  Body();
 
   @override
-  BodyState createState() => new BodyState(colorManager);
+  BodyState createState() => new BodyState();
 }
 
 class BodyState extends State<Body> {
-  final ColorManager colorManager;
-
-  BodyState(this.colorManager);
+  BodyState();
 
   void onClick() {}
 
@@ -24,11 +21,11 @@ class BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: colorManager.background,
+        color: ColorManager.background,
       ),
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: colorManager.background,
+          backgroundColor: ColorManager.background,
           body: Column(
             children: <Widget>[
               Expanded(
@@ -42,26 +39,26 @@ class BodyState extends State<Body> {
                         shape: CircleBorder(
                             side: BorderSide(
                                 style: BorderStyle.solid,
-                                color: colorManager.highlight)),
+                                color: ColorManager.highlight)),
                         color: Colors.black,
                         child: Icon(
                           Icons.menu,
-                          color: colorManager.highlight,
+                          color: ColorManager.highlight,
                         ),
-                        splashColor: colorManager.highlight,
+                        splashColor: ColorManager.highlight,
                         onPressed: onClick,
                       ),
                       RaisedButton(
                         shape: CircleBorder(
                             side: BorderSide(
                                 style: BorderStyle.solid,
-                                color: colorManager.highlight)),
+                                color: ColorManager.highlight)),
                         color: Colors.black,
                         child: Icon(
                           Icons.account_circle,
-                          color: colorManager.highlight,
+                          color: ColorManager.highlight,
                         ),
-                        splashColor: colorManager.highlight,
+                        splashColor: ColorManager.highlight,
                         onPressed: onClick,
                       ),
                     ],
@@ -74,7 +71,7 @@ class BodyState extends State<Body> {
                           side: BorderSide(style: BorderStyle.none)),
                       onPressed: onClick,
                       highlightColor: Colors.transparent,
-                      splashColor: colorManager.highlight,
+                      splashColor: ColorManager.highlight,
                       child: SvgPicture.asset(
                         'assets/lmao.svg',
                       ),
@@ -86,13 +83,11 @@ class BodyState extends State<Body> {
                 flex: 3,
                 child: Padding(
                   padding: EdgeInsets.all(30),
-
                   child: Column(
                     children: <Widget>[
-                      MainMenuEntry(colorManager, "Routenplaner",
-                          "/shoolPathFinder/main"),
-                      MainMenuEntry(colorManager, "Stundenplan", "/404"),
-                      MainMenuEntry(colorManager, "News", "/404"),
+                      MainMenuEntry("Routenplaner", "/shoolPathFinder/main"),
+                      MainMenuEntry("Stundenplan", "/404"),
+                      MainMenuEntry("News", "/404"),
                     ],
                   ),
                 ),

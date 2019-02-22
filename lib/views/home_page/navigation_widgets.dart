@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:bkapp/utils/colorManager.dart';
+import 'package:bkapp/utils/colorManager.dart' as ColorManager;
 
 class MainMenuEntry extends StatefulWidget {
   //inline constructor
   final String _route, _text;
-  final ColorManager _colorManager;
-  MainMenuEntry(this._colorManager, this._text, this._route);
+  MainMenuEntry(this._text, this._route);
 
   @override
   MainMenuEntryState createState() =>
-      new MainMenuEntryState(this._colorManager, this._text, this._route);
+      new MainMenuEntryState(this._text, this._route);
 }
 
 class MainMenuEntryState extends State<MainMenuEntry> {
-  final ColorManager _colorManager;
-
   String _text, _route;
-  MainMenuEntryState(this._colorManager, this._text, this._route);
+  MainMenuEntryState(this._text, this._route);
 
   onPressed() {
     Navigator.of(context).pushNamed(this._route);
@@ -31,33 +28,13 @@ class MainMenuEntryState extends State<MainMenuEntry> {
             onPressed: onPressed,
             child: Text(
               this._text,
-              style: TextStyle(color: this._colorManager.textColor,fontSize: 20),
+              style: TextStyle(color: ColorManager.textColor, fontSize: 20),
             ),
-            highlightColor: this._colorManager.highlight,
-            color: this._colorManager.buttonBackground,
+            highlightColor: ColorManager.highlight,
+            color: ColorManager.buttonBackground,
           ),
         ),
       ],
     );
   }
 }
-/*
-*
-* Expanded(
-          child: Container(
-            child: MaterialButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(this._route);
-              },
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 2, 20),
-                child: new Text(
-                  this._text,
-                  style: TextStyle(fontSize: 32),
-                ),
-              ),
-            ),
-            decoration: BoxDecoration(border: Border.all()),
-          ),
-        )
-* */
