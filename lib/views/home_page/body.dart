@@ -1,9 +1,8 @@
 //system
 import 'package:flutter/material.dart';
-import 'package:bkapp/utils/colorManager.dart' as ColorManager;
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:bkapp/views/home_page/navigation_widgets.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class Body extends StatefulWidget {
   Body();
@@ -13,19 +12,39 @@ class Body extends StatefulWidget {
 }
 
 class BodyState extends State<Body> {
-  BodyState();
+  BodyState(
 
-  void onClick() {}
+    );
+
+  @override
+  void onClick() {
+
+  }
+
+  onReload(){
+    debugPrint("Reloading Wigets");
+    //theme
+    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).backgroundColor);
+    FlutterStatusbarcolor.setNavigationBarColor(Theme.of(context).backgroundColor);
+    if(useWhiteForeground(Theme.of(context).backgroundColor)){
+      FlutterStatusbarcolor.setNavigationBarWhiteForeground(true);
+      FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
+    }else{
+      FlutterStatusbarcolor.setNavigationBarWhiteForeground(false);
+      FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    onReload();
     return Container(
       decoration: BoxDecoration(
-        color: ColorManager.background,
+        color: Theme.of(context).backgroundColor,
       ),
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: ColorManager.background,
+          backgroundColor: Theme.of(context).backgroundColor,
           body: Column(
             children: <Widget>[
               Expanded(
@@ -39,26 +58,26 @@ class BodyState extends State<Body> {
                         shape: CircleBorder(
                             side: BorderSide(
                                 style: BorderStyle.solid,
-                                color: ColorManager.highlight)),
-                        color: Colors.black,
+                                color: Theme.of(context).primaryColor)),
+                        color: Theme.of(context).backgroundColor,
                         child: Icon(
                           Icons.menu,
-                          color: ColorManager.highlight,
+                          color: Theme.of(context).primaryColor,
                         ),
-                        splashColor: ColorManager.highlight,
+                        splashColor: Theme.of(context).primaryColor,
                         onPressed: onClick,
                       ),
                       RaisedButton(
                         shape: CircleBorder(
                             side: BorderSide(
                                 style: BorderStyle.solid,
-                                color: ColorManager.highlight)),
-                        color: Colors.black,
+                                color: Theme.of(context).primaryColor)),
+                        color: Theme.of(context).backgroundColor,
                         child: Icon(
                           Icons.account_circle,
-                          color: ColorManager.highlight,
+                          color: Theme.of(context).primaryColor,
                         ),
-                        splashColor: ColorManager.highlight,
+                        splashColor: Theme.of(context).primaryColor,
                         onPressed: onClick,
                       ),
                     ],
@@ -71,7 +90,7 @@ class BodyState extends State<Body> {
                           side: BorderSide(style: BorderStyle.none)),
                       onPressed: onClick,
                       highlightColor: Colors.transparent,
-                      splashColor: ColorManager.highlight,
+                      splashColor: Theme.of(context).primaryColor,
                       child: SvgPicture.asset(
                         'assets/lmao.svg',
                       ),
