@@ -4,15 +4,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bkapp/views/home_page/navigation_widgets.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
-class Body extends StatefulWidget {
-  Body();
+class Homepage extends StatefulWidget {
+  Homepage();
 
   @override
-  BodyState createState() => new BodyState();
+  HomepageState createState() => new HomepageState();
 }
 
-class BodyState extends State<Body> {
-  BodyState(
+class HomepageState extends State<Homepage> {
+  HomepageState(
 
     );
 
