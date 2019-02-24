@@ -1,34 +1,53 @@
-//system
-import 'package:flutter/material.dart';
-//views
-import 'package:bkapp/views/home_page/body.dart' as Homepage;
-import 'package:bkapp/views//schoolPathFinder_page/body.dart'
-    as SchoolPathFinder;
-//utils
+//
+// http://thetechnocafe.com/just-enough-dart-for-flutter-tutorial-01-variables-types-and-functions/
+// ist ein gutes Tutorial um mal mit dem ganzen scheiß anzufangen
 
-void main() {
-  runApp(new MaterialApp(
-    title: "BK GUT App",
-    debugShowCheckedModeBanner: false,
-    theme: ThemeData(
-        brightness: Brightness.dark,
-        backgroundColor: Color.fromARGB(255, 32, 21, 43),
-        primaryColor: Color.fromARGB(255, 226, 0, 122),
-        accentColor: Color.fromARGB(255, 58, 58, 59),
-        primaryTextTheme:
-            TextTheme(body1: TextStyle(fontSize: 20, color: Colors.white))),
-    home: Homepage.Body(),
-    routes: <String, WidgetBuilder>{
-      "/shoolPathFinder/main": (BuildContext context) =>
-          new SchoolPathFinder.Body(),
-      "/404": (BuildContext context) => new ErrorPage()
-    },
-  ));
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bkapp/logic/theme/theme_bloc.dart';
+import 'package:bkapp/logic/theme/theme_state.dart';
+import 'package:bkapp/views/home_page/homepage.dart';
+
+void main() => runApp(RootWidget());
+
+class RootWidget extends StatefulWidget {
+  RootWidget({Key key}) : super(key: key);
+  @override
+  State<StatefulWidget> createState() => RootWidgetState();
 }
 
-class ErrorPage extends StatelessWidget {
+class RootWidgetState extends State<RootWidget> {
+  final _themeBloc = ThemeBloc();
+
   @override
   Widget build(BuildContext context) {
-    return Text("NICHT DA");
+    return BlocProvider(
+        bloc: _themeBloc,
+        child: Test());
   }
+
+  @override
+  void dispose() {
+    _themeBloc.dispose();
+    super.dispose();
+  }
+}
+
+class Test extends StatelessWidget{
+  const Test ({Key key}): super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    
+    return BlocBuilder(
+            bloc: BlocProvider.of<ThemeBloc>(context),
+            builder: (context, ThemeState state) {
+              return MaterialApp(
+                title: 'Flutter Demo',
+                theme: state.themeData,
+                home: Homepage(),
+              );
+            });
+  }
+
 }
