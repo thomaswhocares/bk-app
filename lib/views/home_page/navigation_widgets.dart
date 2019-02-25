@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MainMenuEntry extends StatelessWidget {
-  final String _text;
-  final String _route;
+  final String textString;
+  final String stringRouteName;
 
-  const MainMenuEntry(this._text, this._route);
+  const MainMenuEntry({Key key,this.textString, this.stringRouteName});
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +13,10 @@ class MainMenuEntry extends StatelessWidget {
         Expanded(
           child: RaisedButton(
             onPressed: () {
-              Navigator.of(context).pushNamed(this._route);
+              Navigator.of(context).pushNamed(this.stringRouteName);
             },
             child: Text(
-              this._text,
+              this.textString,
               style: Theme.of(context).primaryTextTheme.body1,
             ),
             splashColor: Theme.of(context).primaryColor,
