@@ -15,53 +15,48 @@ class HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return CommonPage(
-      child: Column(
-        children: <Widget>[
-          Expanded(
-              child: Column(
-            children: <Widget>[
-              //Obere menü buttons;
-              TopMenuBar(),
-              Expanded(
-                child: RaisedButton(
-                  color: Colors.transparent,
-                  elevation: 0,
-                  shape:
-                      CircleBorder(side: BorderSide(style: BorderStyle.none)),
-                  onPressed: () {},
-                  highlightColor: Colors.transparent,
-                  splashColor: Theme.of(context).primaryColor,
-                  child: SvgPicture.asset(
-                    'assets/lmao.svg',
-                  ),
+      children: <Widget>[
+        Expanded(
+          child: Column(children: <Widget>[
+            //Obere menü buttons;
+            Expanded(
+              child: RaisedButton(
+                color: Colors.transparent,
+                elevation: 0,
+                shape: CircleBorder(side: BorderSide(style: BorderStyle.none)),
+                onPressed: () {},
+                highlightColor: Colors.transparent,
+                splashColor: Theme.of(context).primaryColor,
+                child: SvgPicture.asset(
+                  'assets/lmao.svg',
                 ),
-              )
-            ],
-          )),
-          Expanded(
-            flex: 3,
-            child: Padding(
-              padding: EdgeInsets.all(30),
-              child: Column(
-                children: <Widget>[
-                  MainMenuEntry(
-                    textString: "Routenplaner",
-                    stringRouteName: "/shoolPathFinder/main",
-                  ),
-                  MainMenuEntry(
-                    textString: "Stundenplan",
-                    stringRouteName: "/404",
-                  ),
-                  MainMenuEntry(
-                    textString: "News",
-                    stringRouteName: "/404",
-                  ),
-                ],
               ),
+            )
+          ]),
+        ),
+        Expanded(
+          flex: 3,
+          child: Padding(
+            padding: EdgeInsets.all(30),
+            child: Column(
+              children: <Widget>[
+                MainMenuEntry(
+                  textString: "Routenplaner",
+                  stringRouteName: "/shoolPathFinder/main",
+                ),
+                MainMenuEntry(
+                  textString: "Stundenplan",
+                  stringRouteName: "/404",
+                ),
+                MainMenuEntry(
+                  textString: "News",
+                  stringRouteName: "/404",
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

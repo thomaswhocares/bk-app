@@ -4,7 +4,7 @@ class MainMenuEntry extends StatelessWidget {
   final String textString;
   final String stringRouteName;
 
-  const MainMenuEntry({Key key,this.textString, this.stringRouteName});
+  const MainMenuEntry({Key key, this.textString, this.stringRouteName});
 
   @override
   Widget build(BuildContext context) {
