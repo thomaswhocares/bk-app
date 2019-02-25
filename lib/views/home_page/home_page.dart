@@ -12,9 +12,6 @@ class Homepage extends StatefulWidget {
 }
 
 class HomepageState extends State<Homepage> {
-
-  onClick(){}
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,6 +26,7 @@ class HomepageState extends State<Homepage> {
               Expanded(
                   child: Column(
                 children: <Widget>[
+                  //Obere menü buttons;
                   TopMenuBar(),
                   Expanded(
                     child: RaisedButton(
@@ -36,7 +34,7 @@ class HomepageState extends State<Homepage> {
                       elevation: 0,
                       shape: CircleBorder(
                           side: BorderSide(style: BorderStyle.none)),
-                      onPressed: onClick,
+                      onPressed: () {},
                       highlightColor: Colors.transparent,
                       splashColor: Theme.of(context).primaryColor,
                       child: SvgPicture.asset(
