@@ -8,7 +8,11 @@ import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 
 class ThemeBloc extends Bloc<ThemeChangeEvent, ThemeState> {
   @override
-  ThemeState get initialState => ThemeState.initial();
+  ThemeState get initialState{
+    ThemeState initial = ThemeState.initial();
+    _changeBarColors(initial.themeData);
+    return initial;
+  } 
 
   @override
   Stream<ThemeState> mapEventToState(

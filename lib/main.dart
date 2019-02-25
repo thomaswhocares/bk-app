@@ -2,11 +2,13 @@
 // http://thetechnocafe.com/just-enough-dart-for-flutter-tutorial-01-variables-types-and-functions/
 // ist ein gutes Tutorial um mal mit dem ganzen scheiß anzufangen
 
+import 'package:bkapp/views/common_widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bkapp/logic/theme/theme_bloc.dart';
 import 'package:bkapp/logic/theme/theme_state.dart';
 import 'package:bkapp/views/home_page/home_page.dart';
+import 'package:bkapp/views/settings_page/settings_page.dart';
 
 void main() => runApp(TopBlocProvider(MyApp()));
 
@@ -25,8 +27,8 @@ class MyApp extends StatelessWidget {
             routes: <String, WidgetBuilder>{
               "/shoolPathFinder/main": (BuildContext context) =>
                   new ErrorPage(),
-              "/settings_page": (BuildContext context) => new ErrorPage(),
-              "/profile" : (BuildContext context) => new ErrorPage(),
+              "/settings_page": (BuildContext context) => new SettingsPage(),
+              "/profile": (BuildContext context) => new ErrorPage(),
               "/404": (BuildContext context) => new ErrorPage()
             });
       },
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
 class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Text("NICHT DA");
+    return CommonPage(Text("NICHT DA"));
   }
 }
 
