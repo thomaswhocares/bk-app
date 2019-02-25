@@ -11,10 +11,19 @@ class SettingsPage extends StatefulWidget {
 class SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
-    return CommonPage(
-       child: Container(),
-       
-
-      );
+    return CommonPage(children: <Widget>[
+      Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                "Dark_Mode",
+              )
+            ],
+          )
+        ],
+      )
+    ]);
   }
 }

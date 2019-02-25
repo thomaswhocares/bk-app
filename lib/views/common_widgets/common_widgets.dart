@@ -21,8 +21,8 @@ class CommonPage extends StatelessWidget {
 }
 */
 class CommonPage extends StatelessWidget {
-  final Widget child;
-  const CommonPage({Key key,this.child}) : super(key: key);
+  final List<Widget> children;
+  const CommonPage({Key key, this.children}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,14 @@ class CommonPage extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
-          body: child
+          body: Column(
+            children: <Widget>[
+              TopMenuBar(),
+              Expanded(
+                child: Column(children: children),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -43,7 +50,7 @@ class CommonPage extends StatelessWidget {
 class TopMenuBar extends StatelessWidget {
   final String _settingsRouteName = "/settings_page";
   final String _profileRouteName = "/profile";
-  TopMenuBar({Key key}): super(key: key);
+  TopMenuBar({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -62,6 +69,8 @@ class TopMenuBar extends StatelessWidget {
           ),
           splashColor: Theme.of(context).primaryColor,
           onPressed: () {
+            
+            
             Navigator.of(context).pushNamed(_settingsRouteName);
           },
         ),

@@ -40,9 +40,13 @@ class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonPage(
-      child: Center(
-        child: Text("Noch nicht vorhanden"),
-      ),
+      children: <Widget>[
+        Expanded(
+                  child: Center(
+            child: Text("Noch nicht vorhanden"),
+          ),
+        )
+      ],
     );
   }
 }
