@@ -1,22 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MainMenuEntry extends StatefulWidget {
-  //inline constructor
-  final String _route, _text;
-  MainMenuEntry(this._text, this._route);
+class MainMenuEntry extends StatelessWidget {
+  final String _text;
+  final String _route;
 
-  @override
-  MainMenuEntryState createState() =>
-      new MainMenuEntryState(this._text, this._route);
-}
-
-class MainMenuEntryState extends State<MainMenuEntry> {
-  String _text, _route;
-  MainMenuEntryState(this._text, this._route);
-
-  onPressed() {
-    Navigator.of(context).pushNamed(this._route);
-  }
+  const MainMenuEntry(this._text, this._route);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +12,9 @@ class MainMenuEntryState extends State<MainMenuEntry> {
       children: <Widget>[
         Expanded(
           child: RaisedButton(
-            onPressed: onPressed,
+            onPressed: () {
+              Navigator.of(context).pushNamed(this._route);
+            },
             child: Text(
               this._text,
               style: Theme.of(context).primaryTextTheme.body1,

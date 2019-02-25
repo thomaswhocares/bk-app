@@ -20,6 +20,16 @@ class CommonPage extends StatelessWidget {
   }
 }
 */
+class CommonPage extends StatelessWidget {
+  final Widget child;
+  const CommonPage(this.child);
+
+  @override
+  Widget build(BuildContext context) {
+    return null;
+  }
+}
+
 class TopMenuBar extends StatelessWidget {
   final String _settingsRouteName = "/settings_page";
   final String _profileRouteName = "/profile";
