@@ -15,7 +15,7 @@ class HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return CommonPage(
-      Column(
+      child: Column(
         children: <Widget>[
           Expanded(
               child: Column(
@@ -44,9 +44,18 @@ class HomepageState extends State<Homepage> {
               padding: EdgeInsets.all(30),
               child: Column(
                 children: <Widget>[
-                  MainMenuEntry("Routenplaner", "/shoolPathFinder/main"),
-                  MainMenuEntry("Stundenplan", "/404"),
-                  MainMenuEntry("News", "/404"),
+                  MainMenuEntry(
+                    textString: "Routenplaner",
+                    stringRouteName: "/shoolPathFinder/main",
+                  ),
+                  MainMenuEntry(
+                    textString: "Stundenplan",
+                    stringRouteName: "/404",
+                  ),
+                  MainMenuEntry(
+                    textString: "News",
+                    stringRouteName: "/404",
+                  ),
                 ],
               ),
             ),

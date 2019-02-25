@@ -22,7 +22,7 @@ class CommonPage extends StatelessWidget {
 */
 class CommonPage extends StatelessWidget {
   final Widget child;
-  const CommonPage(this.child);
+  const CommonPage({Key key,this.child}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
