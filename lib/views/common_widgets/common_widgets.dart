@@ -26,7 +26,17 @@ class CommonPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return null;
+    return Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).backgroundColor,
+      ),
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: Theme.of(context).backgroundColor,
+          body: child
+        ),
+      ),
+    );
   }
 }
 
