@@ -22,7 +22,7 @@ class CommonPage extends StatelessWidget {
 */
 class CommonPage extends StatelessWidget {
   final Widget child;
-  const CommonPage({Key key,this.child}): super(key: key);
+  const CommonPage({Key key,this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +43,7 @@ class CommonPage extends StatelessWidget {
 class TopMenuBar extends StatelessWidget {
   final String _settingsRouteName = "/settings_page";
   final String _profileRouteName = "/profile";
+  TopMenuBar({Key key}): super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(
