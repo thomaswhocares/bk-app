@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
 class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CommonPage(
+    return CommonPageCollumStyle(
       children: <Widget>[
         Expanded(
                   child: Center(
