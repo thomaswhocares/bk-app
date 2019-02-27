@@ -22,10 +22,10 @@ class CommonPage extends StatelessWidget {
 */
 enum ViewType { settingsView, profileView, blank }
 
-class CommonPage extends StatelessWidget {
+class CommonPageCollumStyle extends StatelessWidget {
   final List<Widget> children;
   final ViewType viewType;
-  const CommonPage({Key key, this.viewType = ViewType.blank, this.children})
+  const CommonPageCollumStyle({Key key, this.viewType = ViewType.blank, this.children})
       : super(key: key);
 
   @override
