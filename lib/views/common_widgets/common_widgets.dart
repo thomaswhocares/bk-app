@@ -20,9 +20,13 @@ class CommonPage extends StatelessWidget {
   }
 }
 */
+enum ViewType { settingsView, profileView, blank }
+
 class CommonPage extends StatelessWidget {
   final List<Widget> children;
-  const CommonPage({Key key, this.children}) : super(key: key);
+  final ViewType viewType;
+  const CommonPage({Key key, this.viewType = ViewType.blank, this.children})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +39,7 @@ class CommonPage extends StatelessWidget {
           backgroundColor: Theme.of(context).backgroundColor,
           body: Column(
             children: <Widget>[
-              TopMenuBar(),
+              TopMenuBar(viewType: this.viewType),
               Expanded(
                 child: Column(children: children),
               ),
@@ -50,7 +54,8 @@ class CommonPage extends StatelessWidget {
 class TopMenuBar extends StatelessWidget {
   final String _settingsRouteName = "/settings_page";
   final String _profileRouteName = "/profile";
-  TopMenuBar({Key key}) : super(key: key);
+  final ViewType viewType;
+  TopMenuBar({Key key, this.viewType = ViewType.blank}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -69,9 +74,11 @@ class TopMenuBar extends StatelessWidget {
           ),
           splashColor: Theme.of(context).primaryColor,
           onPressed: () {
-            
-            
-            Navigator.of(context).pushNamed(_settingsRouteName);
+            if (viewType == ViewType.blank) {
+              Navigator.of(context).pushNamed(_settingsRouteName);
+            }else if(viewType == ViewType.settingsView){
+              Navigator.of(context).pop();
+            }
           },
         ),
         RaisedButton(

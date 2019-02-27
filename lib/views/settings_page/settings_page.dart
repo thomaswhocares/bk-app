@@ -1,4 +1,4 @@
-import 'package:bkapp/views/common_widgets/common_widgets.dart';
+import 'package:bkapp/views/common_widgets/common_widgets.dart' as CommonWidgets;
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -11,19 +11,22 @@ class SettingsPage extends StatefulWidget {
 class SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
-    return CommonPage(children: <Widget>[
-      Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                "Dark_Mode",
-              )
-            ],
-          )
-        ],
-      )
-    ]);
+    return CommonWidgets.CommonPage(
+      viewType: CommonWidgets.ViewType.settingsView,
+      children: <Widget>[
+        Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "Dark_Mode",
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }
