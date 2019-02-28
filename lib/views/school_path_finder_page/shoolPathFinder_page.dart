@@ -7,5 +7,7 @@ class Body extends StatefulWidget {
 
 class BodyState extends State<Body> {
   @override
-  Widget build(BuildContext context) {}
+  Widget build(BuildContext context) {
+    return Container();
+  }
 }

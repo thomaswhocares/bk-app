@@ -7,7 +7,7 @@ class CommonPage extends StatelessWidget {
   CommonPage(this.child);
 
   Widget build(BuildContext context) {
-    // TODO: implement build
+    // implement build
     return BlocBuilder(
       bloc: BlocProvider.of<ThemeBloc>(context),
       builder: (context, ThemeState state) { 
