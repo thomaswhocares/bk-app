@@ -10,7 +10,7 @@ class ThemeBloc extends Bloc<ThemeChangeEvent, ThemeState> {
   @override
   ThemeState get initialState {
     ThemeState initial = ThemeState.initial();
-    _changeBarColors(initial.themeData);
+    _changeBarColors(initial.themeData.backgroundColor);
     return initial;
   }
 
@@ -21,19 +21,19 @@ class ThemeBloc extends Bloc<ThemeChangeEvent, ThemeState> {
   ) async* {
     if (event is ChangeDarkTheme) {
       ThemeData themeData = ThemeState.dark().themeData;
-      _changeBarColors(themeData);
+      _changeBarColors(themeData.backgroundColor);
       yield ThemeState(themeData: themeData);
     } else if (event is ChangeLightTheme) {
       ThemeData themeData = ThemeState.light().themeData;
-      _changeBarColors(themeData);
+      Future.microtask(() => _changeBarColors(themeData.backgroundColor));
       yield ThemeState(themeData: themeData);
     }
   }
 
-  _changeBarColors(ThemeData themeData) {
-    FlutterStatusbarcolor.setStatusBarColor(themeData.backgroundColor);
-    FlutterStatusbarcolor.setNavigationBarColor(themeData.backgroundColor);
-    if (useWhiteForeground(themeData.backgroundColor)) {
+  _changeBarColors(Color backgroundColor) async {
+    FlutterStatusbarcolor.setStatusBarColor(backgroundColor);
+    FlutterStatusbarcolor.setNavigationBarColor(backgroundColor);
+    if (useWhiteForeground(backgroundColor)) {
       FlutterStatusbarcolor.setNavigationBarWhiteForeground(true);
       FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
     } else {

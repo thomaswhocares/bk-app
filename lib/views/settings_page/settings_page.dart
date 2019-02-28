@@ -1,6 +1,5 @@
 import 'package:bkapp/logic/theme/theme_bloc.dart';
 import 'package:bkapp/logic/theme/theme_change_event.dart';
-import 'package:bkapp/logic/theme/theme_state.dart';
 import 'package:bkapp/views/common_widgets/common_widgets.dart'
     as CommonWidgets;
 import 'package:flutter/material.dart';
