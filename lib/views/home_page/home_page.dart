@@ -14,7 +14,8 @@ class Homepage extends StatefulWidget {
 class HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
-    return CommonPage(
+    return CommonPageCollumStyle(
+      viewType: ViewType.homepage,
       children: <Widget>[
         Expanded(
           child: Column(children: <Widget>[

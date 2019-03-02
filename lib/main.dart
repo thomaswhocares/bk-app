@@ -3,6 +3,7 @@
 // ist ein gutes Tutorial um mal mit dem ganzen scheiß anzufangen
 
 import 'package:bkapp/views/common_widgets/common_widgets.dart';
+import 'package:bkapp/views/profile_page/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bkapp/logic/theme/theme_bloc.dart';
@@ -21,16 +22,16 @@ class MyApp extends StatelessWidget {
       bloc: BlocProvider.of<ThemeBloc>(context),
       builder: (context, ThemeState state) {
         return MaterialApp(
-            title: 'Flutter Demo',
-            theme: state.themeData,
-            home: Homepage(),
-            routes: <String, WidgetBuilder>{
-              "/shoolPathFinder/main": (BuildContext context) =>
-                  new ErrorPage(),
-              "/settings_page": (BuildContext context) => new SettingsPage(),
-              "/profile": (BuildContext context) => new ErrorPage(),
-              "/404": (BuildContext context) => new ErrorPage()
-            });
+          title: 'Flutter Demo',
+          theme: state.themeData,
+          home: Homepage(),
+          routes: <String, WidgetBuilder>{
+            "/shoolPathFinder/main": (BuildContext context) => new ErrorPage(),
+            "/settings_page": (BuildContext context) => new SettingsPage(),
+            "/profile": (BuildContext context) => new ProfilePage(),
+            "/404": (BuildContext context) => new ErrorPage()
+          },
+        );
       },
     );
   }
@@ -39,10 +40,10 @@ class MyApp extends StatelessWidget {
 class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CommonPage(
+    return CommonPageCollumStyle(
       children: <Widget>[
         Expanded(
-                  child: Center(
+          child: Center(
             child: Text("Noch nicht vorhanden"),
           ),
         )
