@@ -39,21 +39,27 @@ class HomepageState extends State<Homepage> {
           flex: 3,
           child: Padding(
             padding: EdgeInsets.all(30),
-            child: Column(
-              children: <Widget>[
-                MainMenuEntry(
-                  textString: "Routenplaner",
-                  stringRouteName: "/shoolPathFinder/main",
-                ),
-                MainMenuEntry(
-                  textString: "Stundenplan",
-                  stringRouteName: "/404",
-                ),
-                MainMenuEntry(
-                  textString: "News",
-                  stringRouteName: "/404",
-                ),
-              ],
+            child: SingleChildScrollView(
+                          child: Column(
+                children: <Widget>[
+                  MainMenuEntry(
+                    textString: "Bildungsbereiche",
+                    stringRouteName: "/bildungsbereiche",
+                  ),
+                  MainMenuEntry(
+                    textString: "****",
+                    stringRouteName: "/bildungsbereiche",
+                  ),
+                  MainMenuEntry(
+                    textString: "Kontakt",
+                    stringRouteName: "/404",
+                  ),
+                  MainMenuEntry(
+                    textString: "News",
+                    stringRouteName: "/404",
+                  ),
+                ],
+              ),
             ),
           ),
         ),

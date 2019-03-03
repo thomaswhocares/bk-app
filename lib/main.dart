@@ -10,6 +10,7 @@ import 'package:bkapp/logic/theme/theme_bloc.dart';
 import 'package:bkapp/logic/theme/theme_state.dart';
 import 'package:bkapp/views/home/home_page.dart';
 import 'package:bkapp/views/settings/settings_page.dart';
+import 'package:bkapp/views/bildungsbereiche/bildungsbereiche_page.dart';
 
 void main() => runApp(
   TopBlocProvider(child: MyApp()),
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           theme: state.themeData,
           home: Homepage(),
           routes: <String, WidgetBuilder>{
-            "/shoolPathFinder/main": (BuildContext context) => new ErrorPage(),
+            "/bildungsbereiche": (BuildContext context) => new BildungsbereichPage(),
             "/settings_page": (BuildContext context) => new SettingsPage(),
             "/profile": (BuildContext context) => new ProfilePage(),
             "/404": (BuildContext context) => new ErrorPage()
