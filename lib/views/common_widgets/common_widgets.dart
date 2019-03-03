@@ -21,7 +21,7 @@ class CommonPage extends StatelessWidget {
   }
 }
 */
-enum ViewType { settingsView, profileView, homepage, blank,bildungsbereiche }
+enum ViewType { settingsView, profileView, homepage, blank, bildungsbereiche }
 /* Settings und profile view haben besonderheiten beim Header, blank homepage und bildungsbereiche sind noch gleich*/
 
 class CommonPageCollumStyle extends StatelessWidget {
@@ -63,8 +63,8 @@ class CommonPageCollumStyle extends StatelessWidget {
           body: Column(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                child: TopMenuBar(viewType: this.viewType)),
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  child: TopMenuBar(viewType: this.viewType)),
               Expanded(
                 child: Column(children: children),
               ),
@@ -77,130 +77,93 @@ class CommonPageCollumStyle extends StatelessWidget {
 }
 
 class TopMenuBar extends StatelessWidget {
-  final String _settingsRouteName = "/settings_page";
-  final String _profileRouteName = "/profile";
+  final String _settingsRouteString = "/settings_page";
+  final String _profileRouteString = "/profile";
   final ViewType viewType;
   TopMenuBar({Key key, this.viewType = ViewType.blank}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        settingsButton(context, viewType, _settingsRouteString),
+        profileButton(context, viewType, _profileRouteString)
+      ],
+    );
+  }
+
+  RaisedButton settingsButton(
+      BuildContext context, ViewType viewType, String settingsRouteString) {
+    VoidCallback onClick;
+    Icon icon = Icon(
+      Icons.menu,
+      color: Theme.of(context).primaryColor,
+    );
     switch (viewType) {
       case ViewType.settingsView:
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            RaisedButton(
-              shape: CircleBorder(
-                  side: BorderSide(
-                      style: BorderStyle.solid,
-                      color: Theme.of(context).primaryColor)),
-              color: Theme.of(context).backgroundColor,
-              child: Icon(
-                Icons.arrow_back,
-                color: Theme.of(context).primaryColor,
-              ),
-              splashColor: Theme.of(context).primaryColor,
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            //Profile Button
-            Text(viewType.toString()),
-            RaisedButton(
-              shape: CircleBorder(
-                  side: BorderSide(
-                      style: BorderStyle.solid,
-                      color: Theme.of(context).primaryColor)),
-              color: Theme.of(context).backgroundColor,
-              child: Icon(
-                Icons.account_circle,
-                color: Theme.of(context).primaryColor,
-              ),
-              splashColor: Theme.of(context).primaryColor,
-              onPressed: null,
-            ),
-          ],
+        onClick = () {
+          Navigator.of(context).pop();
+        };
+        //override
+        icon = Icon(
+          Icons.arrow_back,
+          color: Theme.of(context).primaryColor,
         );
         break;
       case ViewType.profileView:
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            RaisedButton(
-              shape: CircleBorder(
-                  side: BorderSide(
-                      style: BorderStyle.solid,
-                      color: Theme.of(context).primaryColor)),
-              color: Theme.of(context).backgroundColor,
-              child: Icon(
-                Icons.menu,
-                color: Theme.of(context).primaryColor,
-              ),
-              splashColor: Theme.of(context).primaryColor,
-              onPressed: null,
-            ),
-            //Profile Button
-            Text(viewType.toString()),
-            RaisedButton(
-              shape: CircleBorder(
-                  side: BorderSide(
-                      style: BorderStyle.solid,
-                      color: Theme.of(context).primaryColor)),
-              color: Theme.of(context).backgroundColor,
-              child: Icon(
-                Icons.arrow_back,
-                color: Theme.of(context).primaryColor,
-              ),
-              splashColor: Theme.of(context).primaryColor,
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
+        onClick = null;
         break;
       default:
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            RaisedButton(
-              shape: CircleBorder(
-                  side: BorderSide(
-                      style: BorderStyle.solid,
-                      color: Theme.of(context).primaryColor)),
-              color: Theme.of(context).backgroundColor,
-              child: Icon(
-                Icons.menu,
-                color: Theme.of(context).primaryColor,
-              ),
-              splashColor: Theme.of(context).primaryColor,
-              onPressed: () {
-                Navigator.of(context).pushNamed(_settingsRouteName);
-              },
-            ),
-            Text(viewType.toString()),
-            //Profile Button
-            RaisedButton(
-              shape: CircleBorder(
-                  side: BorderSide(
-                      style: BorderStyle.solid,
-                      color: Theme.of(context).primaryColor)),
-              color: Theme.of(context).backgroundColor,
-              child: Icon(
-                Icons.account_circle,
-                color: Theme.of(context).primaryColor,
-              ),
-              splashColor: Theme.of(context).primaryColor,
-              onPressed: () {
-                Navigator.of(context).pushNamed(_profileRouteName);
-              },
-            ),
-          ],
-        );
+        onClick = () {
+          Navigator.of(context).pushNamed(settingsRouteString);
+        };
     }
+    return RaisedButton(
+        shape: CircleBorder(
+            side: BorderSide(
+                style: BorderStyle.solid,
+                color: Theme.of(context).primaryColor)),
+        color: Theme.of(context).backgroundColor,
+        child: icon,
+        splashColor: Theme.of(context).primaryColor,
+        onPressed: onClick);
   }
 
-  
+  RaisedButton profileButton(
+      BuildContext context, ViewType viewType, String profileRouteString) {
+    VoidCallback onClick;
+    Icon icon = Icon(
+      Icons.account_circle,
+      color: Theme.of(context).primaryColor,
+    );
+    switch (viewType) {
+      case ViewType.profileView:
+        onClick = () {
+          Navigator.of(context).pop();
+        };
+        //override
+        icon = Icon(
+          Icons.arrow_back,
+          color: Theme.of(context).primaryColor,
+        );
+        break;
+      case ViewType.settingsView:
+        onClick = null;
+        break;
+      default:
+        onClick = () {
+          Navigator.of(context).pushNamed(profileRouteString);
+        };
+    }
+    return RaisedButton(
+        shape: CircleBorder(
+            side: BorderSide(
+                style: BorderStyle.solid,
+                color: Theme.of(context).primaryColor)),
+        color: Theme.of(context).backgroundColor,
+        child: icon,
+        splashColor: Theme.of(context).primaryColor,
+        onPressed: onClick);
+  }
 }
