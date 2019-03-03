@@ -88,6 +88,7 @@ class TopMenuBar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         settingsButton(context, viewType, _settingsRouteString),
+        Text(viewType.toString()),
         profileButton(context, viewType, _profileRouteString)
       ],
     );
