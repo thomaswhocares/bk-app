@@ -21,7 +21,8 @@ class CommonPage extends StatelessWidget {
   }
 }
 */
-enum ViewType { settingsView, profileView, homepage, blank }
+enum ViewType { settingsView, profileView, homepage, blank,bildungsbereiche }
+/* Settings und profile view haben besonderheiten beim Header, blank homepage und bildungsbereiche sind noch gleich*/
 
 class CommonPageCollumStyle extends StatelessWidget {
   final List<Widget> children;
@@ -61,7 +62,9 @@ class CommonPageCollumStyle extends StatelessWidget {
           backgroundColor: Theme.of(context).backgroundColor,
           body: Column(
             children: <Widget>[
-              TopMenuBar(viewType: this.viewType),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                child: TopMenuBar(viewType: this.viewType)),
               Expanded(
                 child: Column(children: children),
               ),
@@ -83,8 +86,8 @@ class TopMenuBar extends StatelessWidget {
     switch (viewType) {
       case ViewType.settingsView:
         return Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             RaisedButton(
               shape: CircleBorder(
@@ -101,14 +104,44 @@ class TopMenuBar extends StatelessWidget {
                 Navigator.of(context).pop();
               },
             ),
+            //Profile Button
+            Text(viewType.toString()),
+            RaisedButton(
+              shape: CircleBorder(
+                  side: BorderSide(
+                      style: BorderStyle.solid,
+                      color: Theme.of(context).primaryColor)),
+              color: Theme.of(context).backgroundColor,
+              child: Icon(
+                Icons.account_circle,
+                color: Theme.of(context).primaryColor,
+              ),
+              splashColor: Theme.of(context).primaryColor,
+              onPressed: null,
+            ),
           ],
         );
         break;
       case ViewType.profileView:
         return Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            RaisedButton(
+              shape: CircleBorder(
+                  side: BorderSide(
+                      style: BorderStyle.solid,
+                      color: Theme.of(context).primaryColor)),
+              color: Theme.of(context).backgroundColor,
+              child: Icon(
+                Icons.menu,
+                color: Theme.of(context).primaryColor,
+              ),
+              splashColor: Theme.of(context).primaryColor,
+              onPressed: null,
+            ),
+            //Profile Button
+            Text(viewType.toString()),
             RaisedButton(
               shape: CircleBorder(
                   side: BorderSide(
@@ -130,7 +163,7 @@ class TopMenuBar extends StatelessWidget {
       default:
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             RaisedButton(
               shape: CircleBorder(
@@ -147,6 +180,7 @@ class TopMenuBar extends StatelessWidget {
                 Navigator.of(context).pushNamed(_settingsRouteName);
               },
             ),
+            Text(viewType.toString()),
             //Profile Button
             RaisedButton(
               shape: CircleBorder(
@@ -167,4 +201,6 @@ class TopMenuBar extends StatelessWidget {
         );
     }
   }
+
+  
 }

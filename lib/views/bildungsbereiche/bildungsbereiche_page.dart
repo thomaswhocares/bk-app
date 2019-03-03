@@ -10,17 +10,22 @@ class BildungsbereichPageState extends State<BildungsbereichPage> {
   @override
   Widget build(BuildContext context) {
     return CommonPageCollumStyle(
+      viewType: ViewType.bildungsbereiche,
       children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: Text(
-                "sdfdsfffffffffffffffffffff",
-                textScaleFactor: 4,
-              ),
+        Expanded(
+          child: SingleChildScrollView(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    "Was ist das hier",
+                    textScaleFactor: 4,
+                  ),
+                )
+              ],
             ),
-          ],
+          ),
         )
       ],
     );

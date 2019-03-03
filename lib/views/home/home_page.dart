@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bkapp/views/home/navigation_widgets.dart';
-import 'package:bkapp/views/common_widgets/common_widgets.dart';
+import 'package:bkapp/views/common_widgets/common_widgets.dart'
+    as CommonWidgets;
 
 class Homepage extends StatefulWidget {
   Homepage({Key key}) : super(key: key);
@@ -14,8 +15,8 @@ class Homepage extends StatefulWidget {
 class HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
-    return CommonPageCollumStyle(
-      viewType: ViewType.homepage,
+    return CommonWidgets.CommonPageCollumStyle(
+      viewType: CommonWidgets.ViewType.homepage,
       children: <Widget>[
         Expanded(
           child: Column(children: <Widget>[
@@ -39,27 +40,25 @@ class HomepageState extends State<Homepage> {
           flex: 3,
           child: Padding(
             padding: EdgeInsets.all(30),
-            child: SingleChildScrollView(
-                          child: Column(
-                children: <Widget>[
-                  MainMenuEntry(
-                    textString: "Bildungsbereiche",
-                    stringRouteName: "/bildungsbereiche",
-                  ),
-                  MainMenuEntry(
-                    textString: "****",
-                    stringRouteName: "/bildungsbereiche",
-                  ),
-                  MainMenuEntry(
-                    textString: "Kontakt",
-                    stringRouteName: "/404",
-                  ),
-                  MainMenuEntry(
-                    textString: "News",
-                    stringRouteName: "/404",
-                  ),
-                ],
-              ),
+            child: Column(
+              children: <Widget>[
+                MainMenuEntry(
+                  textString: "Bildungsbereiche",
+                  stringRouteName: "/bildungsbereiche",
+                ),
+                MainMenuEntry(
+                  textString: "****",
+                  stringRouteName: "/bildungsbereiche",
+                ),
+                MainMenuEntry(
+                  textString: "Kontakt",
+                  stringRouteName: "/404",
+                ),
+                MainMenuEntry(
+                  textString: "News",
+                  stringRouteName: "/404",
+                ),
+              ],
             ),
           ),
         ),
