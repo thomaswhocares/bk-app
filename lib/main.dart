@@ -3,15 +3,17 @@
 // ist ein gutes Tutorial um mal mit dem ganzen scheiß anzufangen
 
 import 'package:bkapp/views/common_widgets/common_widgets.dart';
-import 'package:bkapp/views/profile_page/profile_page.dart';
+import 'package:bkapp/views/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bkapp/logic/theme/theme_bloc.dart';
 import 'package:bkapp/logic/theme/theme_state.dart';
-import 'package:bkapp/views/home_page/home_page.dart';
-import 'package:bkapp/views/settings_page/settings_page.dart';
+import 'package:bkapp/views/home/home_page.dart';
+import 'package:bkapp/views/settings/settings_page.dart';
 
-void main() => runApp(TopBlocProvider(MyApp()));
+void main() => runApp(
+  TopBlocProvider(child: MyApp()),
+);
 
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
@@ -44,7 +46,7 @@ class ErrorPage extends StatelessWidget {
       children: <Widget>[
         Expanded(
           child: Center(
-            child: Text("Noch nicht vorhanden"),
+            child: Text("ERROR PAGE 404"),
           ),
         )
       ],
@@ -56,7 +58,7 @@ class ErrorPage extends StatelessWidget {
 class TopBlocProvider extends StatefulWidget {
   final Widget child;
 
-  TopBlocProvider(this.child);
+  TopBlocProvider({@required this.child});
   @override
   State<StatefulWidget> createState() => TopBlocProviderState(child);
 }

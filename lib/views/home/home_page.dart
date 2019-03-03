@@ -1,7 +1,7 @@
 //system
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:bkapp/views/home_page/navigation_widgets.dart';
+import 'package:bkapp/views/home/navigation_widgets.dart';
 import 'package:bkapp/views/common_widgets/common_widgets.dart';
 
 class Homepage extends StatefulWidget {
