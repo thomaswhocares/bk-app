@@ -13,8 +13,14 @@ class ThemeBloc extends Bloc<ThemeChangeEvent, ThemeState> {
 
   @override
   ThemeState get initialState {
-    ThemeState initial =
-        ThemeState.fromJson(json.decode(sharedPreferences.getString('theme')));
+    ThemeState initial;
+    try{
+      initial = ThemeState.fromJson(json.decode(sharedPreferences.getString('theme')));
+    }catch (e){
+      initial = ThemeState.dark();
+    }
+
+    
     return initial;
   }
 
