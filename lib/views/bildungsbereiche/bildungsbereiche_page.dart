@@ -14,15 +14,11 @@ class BildungsbereichPageState extends State<BildungsbereichPage> {
       children: <Widget>[
         Expanded(
           child: SingleChildScrollView(
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Expanded(
-                  child: Text(
-                    "Was ist das hier",
-                    textScaleFactor: 4,
-                  ),
-                )
+                
+                
               ],
             ),
           ),

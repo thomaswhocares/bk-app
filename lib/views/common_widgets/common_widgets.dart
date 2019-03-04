@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bkapp/views/common_widgets/utils/utils.dart';
+import 'dart:io' show Platform;
 
 /*
 class CommonPage extends StatelessWidget {
@@ -46,7 +47,8 @@ class CommonPageCollumStyle extends StatelessWidget {
             contition: () {
               if (viewType != ViewType.homepage &&
                   viewType != ViewType.profileView &&
-                  viewType != ViewType.settingsView) {
+                  viewType != ViewType.settingsView &&
+                  Platform.isIOS) {
                 return true;
               } else {
                 return false;

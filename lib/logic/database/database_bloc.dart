@@ -8,5 +8,4 @@ class MyBloc extends Bloc<MyEvent, MyState> {
   Stream<MyState> mapEventToState(MyState currentState, MyEvent event) async* {
     // TODO: implement mapEventToState
   }
-}
-*/
+}*/

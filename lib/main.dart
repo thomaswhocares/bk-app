@@ -13,8 +13,8 @@ import 'package:bkapp/views/settings/settings_page.dart';
 import 'package:bkapp/views/bildungsbereiche/bildungsbereiche_page.dart';
 
 void main() => runApp(
-  TopBlocProvider(child: MyApp()),
-);
+      TopBlocProvider(child: MyApp()),
+    );
 
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
@@ -29,7 +29,8 @@ class MyApp extends StatelessWidget {
           theme: state.themeData,
           home: Homepage(),
           routes: <String, WidgetBuilder>{
-            "/bildungsbereiche": (BuildContext context) => new BildungsbereichPage(),
+            "/bildungsbereiche": (BuildContext context) =>
+                new BildungsbereichPage(),
             "/settings_page": (BuildContext context) => new SettingsPage(),
             "/profile": (BuildContext context) => new ProfilePage(),
             "/404": (BuildContext context) => new ErrorPage()
