@@ -5,6 +5,7 @@
 import 'package:bkapp/views/common_widgets/common_widgets.dart';
 import 'package:bkapp/views/profile/profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bkapp/logic/theme/theme_bloc.dart';
 import 'package:bkapp/logic/theme/theme_state.dart';
@@ -24,6 +25,24 @@ class MyApp extends StatelessWidget {
     return BlocBuilder(
       bloc: BlocProvider.of<ThemeBloc>(context),
       builder: (context, ThemeState state) {
+        if (state.themeData.brightness == Brightness.dark) {
+          SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+            statusBarColor: state.themeData.backgroundColor,
+            statusBarIconBrightness: Brightness.light,
+            systemNavigationBarColor: state.themeData.backgroundColor,
+            systemNavigationBarIconBrightness: Brightness.light,
+            systemNavigationBarDividerColor: state.themeData.backgroundColor,
+          ));
+        } else {
+          SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+            statusBarColor: state.themeData.backgroundColor,
+            statusBarIconBrightness: Brightness.dark,
+            systemNavigationBarColor: state.themeData.backgroundColor,
+            systemNavigationBarIconBrightness: Brightness.dark,
+            systemNavigationBarDividerColor: state.themeData.backgroundColor,
+          ));
+        }
+
         return MaterialApp(
           title: 'Flutter Demo',
           theme: state.themeData,
