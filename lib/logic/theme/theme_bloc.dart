@@ -1,13 +1,20 @@
-import 'package:flutter/material.dart';
 import 'package:bkapp/logic/theme/theme_change_event.dart';
 import 'package:bkapp/logic/theme/theme_state.dart';
-
 import 'package:bloc/bloc.dart';
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeBloc extends Bloc<ThemeChangeEvent, ThemeState> {
+  static SharedPreferences sharedPreferences;
+
+  static Future init() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+  }
+
   @override
   ThemeState get initialState {
-    ThemeState initial = ThemeState.initial();
+    ThemeState initial =
+        ThemeState.fromJson(json.decode(sharedPreferences.getString('theme')));
     return initial;
   }
 
@@ -17,11 +24,17 @@ class ThemeBloc extends Bloc<ThemeChangeEvent, ThemeState> {
     ThemeChangeEvent event,
   ) async* {
     if (event is ChangeDarkTheme) {
-      ThemeData themeData = ThemeState.dark().themeData;
-      yield ThemeState(themeData: themeData);
+      ThemeState themeState = ThemeState.dark();
+      SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
+      sharedPreferences.setString('theme', json.encode(themeState.toJson()));
+      yield themeState;
     } else if (event is ChangeLightTheme) {
-      ThemeData themeData = ThemeState.light().themeData;
-      yield ThemeState(themeData: themeData);
+      ThemeState themeState = ThemeState.light();
+      SharedPreferences sharedPreferences =
+          await SharedPreferences.getInstance();
+      sharedPreferences.setString('theme', json.encode(themeState.toJson()));
+      yield themeState;
     }
   }
 }

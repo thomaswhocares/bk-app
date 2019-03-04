@@ -13,9 +13,16 @@ import 'package:bkapp/views/home/home_page.dart';
 import 'package:bkapp/views/settings/settings_page.dart';
 import 'package:bkapp/views/bildungsbereiche/bildungsbereiche_page.dart';
 
-void main() => runApp(
-      TopBlocProvider(child: MyApp()),
-    );
+void main() {
+  start();
+}
+
+//hack um den scheiß datei server dings vor dem rest der app zum laufen zu bekommen.
+start() async {
+  await ThemeBloc.init();
+  //es geht normal weiter
+  runApp(TopBlocProvider(child: MyApp()));
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
