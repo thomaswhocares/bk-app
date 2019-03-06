@@ -16,7 +16,9 @@ class _BildungsuebersichtState extends State<Bildungsuebersicht> {
       elements[i]=(_Entry());
     }
 
-    return CommonPageCollumStyle(children: elements);
+    return CommonPageCollumStyle(
+      viewType: ViewType.bildungsuebersicht,
+      children: elements);
   }
 }
 

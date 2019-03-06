@@ -22,7 +22,7 @@ class CommonPage extends StatelessWidget {
   }
 }
 */
-enum ViewType { settingsView, profileView, homepage, blank, bildungsbereiche }
+enum ViewType { settingsView, profileView, homepage, blank, bildungsuebersicht }
 /* Settings und profile view haben besonderheiten beim Header, blank homepage und bildungsbereiche sind noch gleich*/
 
 class CommonPageCollumStyle extends StatelessWidget {
@@ -99,14 +99,15 @@ class TopMenuBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        settingsButton(context, viewType, _settingsRouteString),
+        _settingsButton(context, viewType, _settingsRouteString),
         Text(viewType.toString()),
-        profileButton(context, viewType, _profileRouteString)
+        _profileButton(context, viewType, _profileRouteString)
       ],
     );
   }
 
-  RaisedButton settingsButton(
+  //private
+  RaisedButton _settingsButton(
       BuildContext context, ViewType viewType, String settingsRouteString) {
     VoidCallback onClick;
     Icon icon = Icon(
@@ -142,8 +143,8 @@ class TopMenuBar extends StatelessWidget {
         splashColor: Theme.of(context).primaryColor,
         onPressed: onClick);
   }
-
-  RaisedButton profileButton(
+  //private
+  RaisedButton _profileButton(
       BuildContext context, ViewType viewType, String profileRouteString) {
     VoidCallback onClick;
     Icon icon = Icon(
