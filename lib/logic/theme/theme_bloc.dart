@@ -19,8 +19,6 @@ class ThemeBloc extends Bloc<ThemeChangeEvent, ThemeState> {
     }catch (e){
       initial = ThemeState.dark();
     }
-
-    
     return initial;
   }
 

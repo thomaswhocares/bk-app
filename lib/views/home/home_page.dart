@@ -43,8 +43,8 @@ class HomepageState extends State<Homepage> {
             child: Column(
               children: <Widget>[
                 MainMenuEntry(
-                  textString: "Bildungsbereiche",
-                  stringRouteName: "/bildungsbereiche",
+                  textString: "Bildungsübersicht",
+                  stringRouteName: "/bildungsübersicht",
                 ),
                 MainMenuEntry(
                   textString: "****",

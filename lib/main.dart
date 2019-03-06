@@ -11,7 +11,7 @@ import 'package:bkapp/logic/theme/theme_bloc.dart';
 import 'package:bkapp/logic/theme/theme_state.dart';
 import 'package:bkapp/views/home/home_page.dart';
 import 'package:bkapp/views/settings/settings_page.dart';
-import 'package:bkapp/views/bildungsbereiche/bildungsbereiche_page.dart';
+import 'package:bkapp/views/bildungsuebersicht/bildungsuebersicht_page.dart';
 
 void main() {
   start();
@@ -55,8 +55,8 @@ class MyApp extends StatelessWidget {
           theme: state.themeData,
           home: Homepage(),
           routes: <String, WidgetBuilder>{
-            "/bildungsbereiche": (BuildContext context) =>
-                new BildungsbereichPage(),
+            "/bildungsübersicht": (BuildContext context) =>
+                new Bildungsuebersicht(),
             "/settings_page": (BuildContext context) => new SettingsPage(),
             "/profile": (BuildContext context) => new ProfilePage(),
             "/404": (BuildContext context) => new ErrorPage()

@@ -34,6 +34,21 @@ class CommonPageCollumStyle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    //List widget zu welchem alle child widgets hinzugefügt werden welche übergeben werden.
+    List<Widget> pageContent = [];
+
+    //Header Bar
+    pageContent.add(Padding(
+        //style
+        padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+        //Header Bar
+        child: TopMenuBar(viewType: this.viewType)));
+
+    // Die children aus der jeweiligen ansicht.
+    pageContent.addAll(children);
+
+    // zeug was auf jeder seite gebraucht wird um eine Seite anzuzeigen + pageContent
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).backgroundColor,
@@ -42,18 +57,22 @@ class CommonPageCollumStyle extends StatelessWidget {
         child: Scaffold(
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
-          //BackButton
+          // In den Floating action button wird ein Widget gepackt welches einen zurück button beinhaltet
+          // und die logic (contition) um diesen nur an bestimmten stellen anzuzeigen.
           floatingActionButton: conditionalWidget(
             contition: () {
               if (viewType != ViewType.homepage &&
                   viewType != ViewType.profileView &&
                   viewType != ViewType.settingsView &&
                   Platform.isIOS) {
+                //button wird angezeigt
                 return true;
               } else {
+                //button wird ausgeblended
                 return false;
               }
             },
+            //zurück button
             widget: RaisedButton(
               onPressed: () {
                 Navigator.of(context).pop();
@@ -62,16 +81,7 @@ class CommonPageCollumStyle extends StatelessWidget {
             ),
           ),
           backgroundColor: Theme.of(context).backgroundColor,
-          body: Column(
-            children: <Widget>[
-              Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                  child: TopMenuBar(viewType: this.viewType)),
-              Expanded(
-                child: Column(children: children),
-              ),
-            ],
-          ),
+          body: Column(children: pageContent),
         ),
       ),
     );
