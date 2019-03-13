@@ -19,11 +19,7 @@ class SharedPreferenceProvider {
 
   get sharedPreferences {
     if (_sharedPreferences != null) {
-      try {
-        return _sharedPreferences;
-      } catch (e) {
-        print(e);
-      }
+      return _sharedPreferences;
     }
   }
 }
