@@ -14,13 +14,6 @@ import 'package:bkapp/views/settings/settings_page.dart';
 import 'package:bkapp/views/bildungsuebersicht/bildungsuebersicht_page.dart';
 
 void main() {
-  start();
-}
-
-//hack um den scheiß datei server dings vor dem rest der app zum laufen zu bekommen.
-start() async {
-  await ThemeBloc.init();
-  //es geht normal weiter
   runApp(TopBlocProvider(child: MyApp()));
 }
 
