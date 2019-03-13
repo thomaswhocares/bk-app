@@ -1,4 +1,4 @@
-import 'package:bkapp/logic/statics.dart' as Statics;
+import 'package:bkapp/logic/singleton.dart' as Singletons;
 import 'package:bkapp/logic/theme/theme_change_event.dart';
 import 'package:bkapp/logic/theme/theme_state.dart';
 import 'package:bloc/bloc.dart';
@@ -10,7 +10,7 @@ class ThemeBloc extends Bloc<ThemeChangeEvent, ThemeState> {
     ThemeState initial;
     try {
       initial = ThemeState.fromJson(json.decode(
-          Statics.SharedPreferenceProvider()
+          Singletons.SharedPreferenceProvider()
               .sharedPreferences
               .getString('theme')));
     } catch (e) {
@@ -26,13 +26,13 @@ class ThemeBloc extends Bloc<ThemeChangeEvent, ThemeState> {
   ) async* {
     if (event is ChangeDarkTheme) {
       ThemeState themeState = ThemeState.dark();
-      Statics.SharedPreferenceProvider()
+      Singletons.SharedPreferenceProvider()
           .sharedPreferences
           .setString('theme', json.encode(themeState.toJson()));
       yield themeState;
     } else if (event is ChangeLightTheme) {
       ThemeState themeState = ThemeState.light();
-      Statics.SharedPreferenceProvider()
+      Singletons.SharedPreferenceProvider()
           .sharedPreferences
           .setString('theme', json.encode(themeState.toJson()));
       yield themeState;
