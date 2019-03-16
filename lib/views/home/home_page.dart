@@ -30,7 +30,7 @@ class HomepageState extends State<Homepage> {
                 highlightColor: Colors.transparent,
                 splashColor: Theme.of(context).primaryColor,
                 child: SvgPicture.asset(
-                  'assets/lmao.svg',
+                  'assets/gut_logo.svg',
                 ),
               ),
             )
