@@ -28,7 +28,7 @@ class ThemeState {
 
   ThemeState.fromJson(Map<String, dynamic> json)
       : themeData = ThemeData(
-          brightness: Brightness.dark,
+          brightness: _brightnessFromString(json['themeData']['brightness']),
           backgroundColor: Color(json['themeData']['backgroundColor']),
           primaryColor: Color(json['themeData']['primaryColor']),
           accentColor: Color(json['themeData']['accentColor']),
@@ -61,4 +61,15 @@ class ThemeState {
           }
         }
       };
+  static Brightness _brightnessFromString(String s){
+    if (s == "Brightness.dark"){
+      return Brightness.dark;
+    }
+    else if (s == "Brightness.light") {
+      return Brightness.light;
+    } else {
+      debugPrint("Fehler ThemeState._brightnessFromString gespeicherter Wert ist keine brightness");
+      return Brightness.dark;
+    }
+  }
 }

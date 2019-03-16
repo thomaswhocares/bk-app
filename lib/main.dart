@@ -12,8 +12,10 @@ import 'package:bkapp/logic/theme/theme_state.dart';
 import 'package:bkapp/views/home/home_page.dart';
 import 'package:bkapp/views/settings/settings_page.dart';
 import 'package:bkapp/views/bildungsuebersicht/bildungsuebersicht_page.dart';
+import 'package:bkapp/logic/singleton.dart';
 
-void main() {
+void main() async{
+  await SharedPreferenceProvider().init();
   runApp(TopBlocProvider(child: MyApp()));
 }
 

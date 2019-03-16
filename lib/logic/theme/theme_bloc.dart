@@ -14,6 +14,7 @@ class ThemeBloc extends Bloc<ThemeChangeEvent, ThemeState> {
               .sharedPreferences
               .getString('theme')));
     } catch (e) {
+      print(e);
       initial = ThemeState.dark();
     }
     return initial;

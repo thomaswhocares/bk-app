@@ -1,25 +1,22 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:io';
 
 class SharedPreferenceProvider {
-  static final SharedPreferenceProvider _sharedPreferenceProvider =
-      new SharedPreferenceProvider._internal();
-  SharedPreferences _sharedPreferences;
+  
+  static SharedPreferences _sharedPreferences;
 
-  SharedPreferenceProvider._internal() {
-    init();
+  init() async{
+      _sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  factory SharedPreferenceProvider() {
-    return _sharedPreferenceProvider;
-  }
-
-  Future init() async {
-    _sharedPreferences = await SharedPreferences.getInstance();
-  }
 
   get sharedPreferences {
-    if (_sharedPreferences != null) {
+    if ( _sharedPreferences != null) {
       return _sharedPreferences;
+    }else{
+      print("The Programmer messed up again big time . _sharedPreferences == null");
+      //if i fuck up this badly again i should feel it...
+      exit(0);
     }
   }
 }
