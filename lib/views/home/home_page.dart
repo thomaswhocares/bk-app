@@ -5,15 +5,9 @@ import 'package:bkapp/views/home/navigation_widgets.dart';
 import 'package:bkapp/views/common_widgets/common_widgets.dart'
     as CommonWidgets;
 
-class Homepage extends StatefulWidget {
-  Homepage({Key key}) : super(key: key);
+class Homepage extends StatelessWidget {
 
-  @override
-  HomepageState createState() => new HomepageState();
-}
-
-class HomepageState extends State<Homepage> {
-  @override
+@override
   Widget build(BuildContext context) {
     return CommonWidgets.CommonPageCollumStyle(
       viewType: CommonWidgets.ViewType.homepage,
@@ -48,7 +42,7 @@ class HomepageState extends State<Homepage> {
                 ),
                 MainMenuEntry(
                   textString: "****",
-                  stringRouteName: "/bildungsbereiche",
+                  stringRouteName: "/bildungsübersicht",
                 ),
                 MainMenuEntry(
                   textString: "Kontakt",
