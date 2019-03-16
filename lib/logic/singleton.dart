@@ -23,5 +23,3 @@ class SharedPreferenceProvider {
     }
   }
 }
-
-class DBProvider {}

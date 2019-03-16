@@ -22,7 +22,6 @@ class _BildungsuebersichtState extends State<Bildungsuebersicht> {
 }
 
 class _DummyElement extends StatelessWidget {
-  BuildContext _context;
   _DummyElement({Key key}) : super(key: key);
 
   @override
