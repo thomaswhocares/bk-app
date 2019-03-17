@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:bkapp/views/common_widgets/utils/utils.dart';
 import 'dart:io' show Platform;
 
 /*
@@ -34,7 +33,6 @@ class CommonPageCollumStyle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     //List widget zu welchem alle child widgets hinzugefügt werden welche übergeben werden.
     List<Widget> pageContent = [];
 
@@ -59,7 +57,7 @@ class CommonPageCollumStyle extends StatelessWidget {
               FloatingActionButtonLocation.centerDocked,
           // In den Floating action button wird ein Widget gepackt welches einen zurück button beinhaltet
           // und die logic (contition) um diesen nur an bestimmten stellen anzuzeigen.
-          floatingActionButton: conditionalWidget(
+          floatingActionButton: _conditionalWidget(
             contition: () {
               if (viewType != ViewType.homepage &&
                   viewType != ViewType.profileView &&
@@ -143,6 +141,7 @@ class TopMenuBar extends StatelessWidget {
         splashColor: Theme.of(context).primaryColor,
         onPressed: onClick);
   }
+
   //private
   RaisedButton _profileButton(
       BuildContext context, ViewType viewType, String profileRouteString) {
@@ -181,3 +180,11 @@ class TopMenuBar extends StatelessWidget {
         onPressed: onClick);
   }
 }
+
+Widget _conditionalWidget({Widget widget, @required bool contition()}) {
+    if (contition()) {
+      return widget;
+    } else {
+      return Container();
+    }
+  }

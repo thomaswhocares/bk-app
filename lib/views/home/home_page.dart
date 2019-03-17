@@ -1,13 +1,11 @@
 //system
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:bkapp/views/home/navigation_widgets.dart';
 import 'package:bkapp/views/common_widgets/common_widgets.dart'
     as CommonWidgets;
 
 class Homepage extends StatelessWidget {
-
-@override
+  @override
   Widget build(BuildContext context) {
     return CommonWidgets.CommonPageCollumStyle(
       viewType: CommonWidgets.ViewType.homepage,
@@ -36,19 +34,23 @@ class Homepage extends StatelessWidget {
             padding: EdgeInsets.all(30),
             child: Column(
               children: <Widget>[
-                MainMenuEntry(
+                _mainMenuEntry(
+                  context: context,
                   textString: "Bildungsübersicht",
                   stringRouteName: "/bildungsübersicht",
                 ),
-                MainMenuEntry(
+                _mainMenuEntry(
+                  context: context,
                   textString: "****",
                   stringRouteName: "/bildungsübersicht",
                 ),
-                MainMenuEntry(
+                _mainMenuEntry(
+                  context: context,
                   textString: "Kontakt",
                   stringRouteName: "/404",
                 ),
-                MainMenuEntry(
+                _mainMenuEntry(
+                  context: context,
                   textString: "News",
                   stringRouteName: "/404",
                 ),
@@ -59,4 +61,28 @@ class Homepage extends StatelessWidget {
       ],
     );
   }
+}
+
+Widget _mainMenuEntry(
+    {@required BuildContext context,
+    String stringRouteName,
+    String textString}) {
+  return new Row(
+    children: <Widget>[
+      Expanded(
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed(stringRouteName);
+          },
+          child: Text(
+            textString,
+            style: Theme.of(context).primaryTextTheme.body1,
+          ),
+          splashColor: Theme.of(context).primaryColor,
+          highlightColor: Colors.transparent,
+          color: Theme.of(context).backgroundColor,
+        ),
+      ),
+    ],
+  );
 }

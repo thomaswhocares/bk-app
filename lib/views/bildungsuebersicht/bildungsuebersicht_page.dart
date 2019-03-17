@@ -2,35 +2,34 @@ import 'package:bkapp/views/common_widgets/common_widgets.dart'
     as CommonWidgets;
 import 'package:flutter/material.dart';
 
-class Bildungsuebersicht extends StatefulWidget {
-  Bildungsuebersicht({Key key}) : super(key: key);
-  @override
-  _BildungsuebersichtState createState() => _BildungsuebersichtState();
-}
-
-class _BildungsuebersichtState extends State<Bildungsuebersicht> {
+class Bildungsuebersicht extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CommonWidgets.CommonPageCollumStyle(
-        viewType: CommonWidgets.ViewType.bildungsuebersicht,
-        children: <Widget>[
-          Expanded(
-            child: Text("data"),
-          )
-        ]);
-  }
-}
-
-class _DummyElement extends StatelessWidget {
-  _DummyElement({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Expanded(
-          child: Text("data"),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "Hey",
+                textScaleFactor: 4,
+              ),
+              Text(
+                "Do you come here often ?",
+                textScaleFactor: 2,
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              
+            ],
+          ),
         )
       ],
     );

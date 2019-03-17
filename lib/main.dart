@@ -19,6 +19,33 @@ void main() async{
   runApp(TopBlocProvider(child: MyApp()));
 }
 
+//---------------------Adds a top level widget that allows themeState----------------------------
+class TopBlocProvider extends StatefulWidget {
+  final Widget child;
+
+  TopBlocProvider({@required this.child});
+  @override
+  State<StatefulWidget> createState() => TopBlocProviderState(child);
+}
+
+class TopBlocProviderState extends State<TopBlocProvider> {
+  Widget child;
+  TopBlocProviderState(this.child);
+  final _themeBloc = ThemeBloc();
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(bloc: _themeBloc, child: child);
+  }
+
+  @override
+  void dispose() {
+    _themeBloc.dispose();
+    super.dispose();
+  }
+}
+//-------------------------------------------------------------------
+
+
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
 
@@ -77,28 +104,3 @@ class ErrorPage extends StatelessWidget {
   }
 }
 
-//---------------------Adds a top level widget that allows themeState----------------------------
-class TopBlocProvider extends StatefulWidget {
-  final Widget child;
-
-  TopBlocProvider({@required this.child});
-  @override
-  State<StatefulWidget> createState() => TopBlocProviderState(child);
-}
-
-class TopBlocProviderState extends State<TopBlocProvider> {
-  Widget child;
-  TopBlocProviderState(this.child);
-  final _themeBloc = ThemeBloc();
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(bloc: _themeBloc, child: child);
-  }
-
-  @override
-  void dispose() {
-    _themeBloc.dispose();
-    super.dispose();
-  }
-}
-//-------------------------------------------------------------------
