@@ -34,25 +34,22 @@ class Homepage extends StatelessWidget {
             padding: EdgeInsets.all(30),
             child: Column(
               children: <Widget>[
-                _mainMenuEntry(
+                CommonWidgets.menuEntry(
                   context: context,
-                  textString: "Bildungsübersicht",
+                  stringRouteName: "/bildungsübersicht",
+                  text: Text("Bildungsübersicht"),
+                ),
+                CommonWidgets.menuEntry(
+                  context: context,
                   stringRouteName: "/bildungsübersicht",
                 ),
-                _mainMenuEntry(
+                CommonWidgets.menuEntry(
                   context: context,
-                  textString: "****",
-                  stringRouteName: "/bildungsübersicht",
+                  text: Text("Kontakt"),
                 ),
-                _mainMenuEntry(
+                CommonWidgets.menuEntry(
                   context: context,
-                  textString: "Kontakt",
-                  stringRouteName: "/404",
-                ),
-                _mainMenuEntry(
-                  context: context,
-                  textString: "News",
-                  stringRouteName: "/404",
+                  text: Text("News"),
                 ),
               ],
             ),
@@ -61,28 +58,4 @@ class Homepage extends StatelessWidget {
       ],
     );
   }
-}
-
-Widget _mainMenuEntry(
-    {@required BuildContext context,
-    String stringRouteName,
-    String textString}) {
-  return new Row(
-    children: <Widget>[
-      Expanded(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.of(context).pushNamed(stringRouteName);
-          },
-          child: Text(
-            textString,
-            style: Theme.of(context).primaryTextTheme.body1,
-          ),
-          splashColor: Theme.of(context).primaryColor,
-          highlightColor: Colors.transparent,
-          color: Theme.of(context).backgroundColor,
-        ),
-      ),
-    ],
-  );
 }

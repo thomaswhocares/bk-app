@@ -11,9 +11,12 @@ class Bildungsuebersicht extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                "Hey",
-                textScaleFactor: 4,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  "Hey",
+                  textScaleFactor: 4,
+                ),
               ),
               Text(
                 "Do you come here often ?",
@@ -27,7 +30,8 @@ class Bildungsuebersicht extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              
+              CommonWidgets.menuEntry(context: context,
+              text: Text("data"))
             ],
           ),
         )

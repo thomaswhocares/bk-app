@@ -41,7 +41,7 @@ class CommonPageCollumStyle extends StatelessWidget {
         //style
         padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
         //Header Bar
-        child: TopMenuBar(viewType: this.viewType)));
+        child: _TopMenuBar(viewType: this.viewType)));
 
     // Die children aus der jeweiligen ansicht.
     pageContent.addAll(children);
@@ -86,11 +86,11 @@ class CommonPageCollumStyle extends StatelessWidget {
   }
 }
 
-class TopMenuBar extends StatelessWidget {
+class _TopMenuBar extends StatelessWidget {
   final String _settingsRouteString = "/settings_page";
   final String _profileRouteString = "/profile";
   final ViewType viewType;
-  TopMenuBar({Key key, this.viewType = ViewType.blank}) : super(key: key);
+  _TopMenuBar({Key key, this.viewType = ViewType.blank}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -182,9 +182,33 @@ class TopMenuBar extends StatelessWidget {
 }
 
 Widget _conditionalWidget({Widget widget, @required bool contition()}) {
-    if (contition()) {
-      return widget;
-    } else {
-      return Container();
-    }
+  if (contition()) {
+    return widget;
+  } else {
+    return Container();
   }
+}
+
+Widget menuEntry(
+    {@required BuildContext context,
+    String stringRouteName = "/404",
+    Text text}) {
+  if (text == null) {
+    text = Text("--- NOT SET ---");
+  }
+  return new Row(
+    children: <Widget>[
+      Expanded(
+        child: RaisedButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed(stringRouteName);
+          },
+          child: text,
+          splashColor: Theme.of(context).primaryColor,
+          highlightColor: Colors.transparent,
+          color: Theme.of(context).backgroundColor,
+        ),
+      ),
+    ],
+  );
+}
