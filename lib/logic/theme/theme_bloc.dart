@@ -29,13 +29,13 @@ class ThemeBloc extends Bloc<ThemeChangeEvent, ThemeState> {
       ThemeState themeState = ThemeState.dark();
       Singletons.SharedPreferenceProvider()
           .sharedPreferences
-          .setString('theme', json.encode(themeState.toJson()));
+          .setString('theme', json.encode(ThemeState.darkTheme()));
       yield themeState;
     } else if (event is ChangeLightTheme) {
       ThemeState themeState = ThemeState.light();
       Singletons.SharedPreferenceProvider()
           .sharedPreferences
-          .setString('theme', json.encode(themeState.toJson()));
+          .setString('theme', json.encode(ThemeState.lightTheme()));
       yield themeState;
     }
   }

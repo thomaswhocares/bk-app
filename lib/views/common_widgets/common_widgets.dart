@@ -110,7 +110,7 @@ class _TopMenuBar extends StatelessWidget {
     VoidCallback onClick;
     Icon icon = Icon(
       Icons.menu,
-      color: Theme.of(context).primaryColor,
+      color: Theme.of(context).iconTheme.color
     );
     switch (viewType) {
       case ViewType.settingsView:
@@ -120,7 +120,7 @@ class _TopMenuBar extends StatelessWidget {
         //override
         icon = Icon(
           Icons.arrow_back,
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).iconTheme.color,
         );
         break;
       case ViewType.profileView:
@@ -135,10 +135,8 @@ class _TopMenuBar extends StatelessWidget {
         shape: CircleBorder(
             side: BorderSide(
                 style: BorderStyle.solid,
-                color: Theme.of(context).primaryColor)),
-        color: Theme.of(context).backgroundColor,
+                color: Theme.of(context).iconTheme.color)),
         child: icon,
-        splashColor: Theme.of(context).primaryColor,
         onPressed: onClick);
   }
 
@@ -148,7 +146,7 @@ class _TopMenuBar extends StatelessWidget {
     VoidCallback onClick;
     Icon icon = Icon(
       Icons.account_circle,
-      color: Theme.of(context).primaryColor,
+      color: Theme.of(context).iconTheme.color
     );
     switch (viewType) {
       case ViewType.profileView:
@@ -158,7 +156,7 @@ class _TopMenuBar extends StatelessWidget {
         //override
         icon = Icon(
           Icons.arrow_back,
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).iconTheme.color,
         );
         break;
       case ViewType.settingsView:
@@ -173,10 +171,8 @@ class _TopMenuBar extends StatelessWidget {
         shape: CircleBorder(
             side: BorderSide(
                 style: BorderStyle.solid,
-                color: Theme.of(context).primaryColor)),
-        color: Theme.of(context).backgroundColor,
+                color: Theme.of(context).iconTheme.color)),
         child: icon,
-        splashColor: Theme.of(context).primaryColor,
         onPressed: onClick);
   }
 }
@@ -214,10 +210,6 @@ Widget menuButtonNavigator(
               padding: const EdgeInsets.all(20.0),
               child: text,
             ),
-            splashColor: Theme.of(context).primaryColor,
-            highlightColor: Colors.transparent,
-            color: Theme.of(context).backgroundColor,
-            shape: Border.all(color: Theme.of(context).primaryColor,width: 0.6),
           ),
         ),
       ],

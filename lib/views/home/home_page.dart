@@ -20,7 +20,6 @@ class Homepage extends StatelessWidget {
                 shape: CircleBorder(side: BorderSide(style: BorderStyle.none)),
                 onPressed: () {},
                 highlightColor: Colors.transparent,
-                splashColor: Theme.of(context).primaryColor,
                 child: SvgPicture.asset(
                   'assets/gut_logo.svg',
                 ),
@@ -36,7 +35,7 @@ class Homepage extends StatelessWidget {
                 children: <Widget>[
                   CommonWidgets.menuButtonNavigator(
                     context: context,
-                    stringRouteName: "/bildungsübersicht",
+                    stringRouteName: "/bildungsübersichtSpash",
                     text: Text("Bildungsübersicht"),
                   ),
                   CommonWidgets.menuButtonNavigator(

@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:bkapp/views/common_widgets/common_widgets.dart'
     as CommonWidgets;
-import 'package:flutter/material.dart';
 
 class Bildungsuebersicht extends StatelessWidget {
   @override
@@ -8,44 +8,15 @@ class Bildungsuebersicht extends StatelessWidget {
     return CommonWidgets.CommonPageCollumStyle(
       children: <Widget>[
         Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  "Hey",
-                  textScaleFactor: 4,
-                ),
-              ),
-              Text(
-                "Do you come here often ?",
-                textScaleFactor: 2,
-              ),
-            ],
-          ),
+          flex: 2,
+          child: Text("placeholder"),
         ),
         Expanded(
-          flex: 2,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                CommonWidgets.menuButtonNavigator(
-                  context: context,
-                  text: Text("Nur relavante Bildungsangebote"),
-                  outerPadding: EdgeInsets.all(0)
-                ),
-                CommonWidgets.menuButtonNavigator(
-                  context: context,
-                  text: Text("Alle Bildungsangebote"),
-                  outerPadding: EdgeInsets.all(0)
-                )
-              ],
-            ),
-          ),
-        )
+            flex: 1,
+            child: Container(
+              decoration: BoxDecoration(border: Border.all(color: Theme.of(context).primaryColor), ),
+
+            )),
       ],
     );
   }
