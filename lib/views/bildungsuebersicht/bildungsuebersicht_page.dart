@@ -34,7 +34,7 @@ class Bildungsuebersicht extends StatelessWidget {
               children: <Widget>[
                 CommonWidgets.menuButtonNavigator(
                   context: context,
-                  text: Text("Nur Relavante"),
+                  text: Text("Nur relavante Bildungsangebote"),
                   outerPadding: EdgeInsets.all(0)
                 ),
                 CommonWidgets.menuButtonNavigator(
