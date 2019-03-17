@@ -31,30 +31,31 @@ class Homepage extends StatelessWidget {
         Expanded(
           flex: 3,
           child: Padding(
-            padding: EdgeInsets.all(30),
+            padding: const EdgeInsets.all(30),
             child: Column(
-              children: <Widget>[
-                CommonWidgets.menuEntry(
-                  context: context,
-                  stringRouteName: "/bildungsübersicht",
-                  text: Text("Bildungsübersicht"),
-                ),
-                CommonWidgets.menuEntry(
-                  context: context,
-                  stringRouteName: "/bildungsübersicht",
-                ),
-                CommonWidgets.menuEntry(
-                  context: context,
-                  text: Text("Kontakt"),
-                ),
-                CommonWidgets.menuEntry(
-                  context: context,
-                  text: Text("News"),
-                ),
-              ],
-            ),
+                children: <Widget>[
+                  CommonWidgets.menuButtonNavigator(
+                    context: context,
+                    stringRouteName: "/bildungsübersicht",
+                    text: Text("Bildungsübersicht"),
+                  ),
+                  CommonWidgets.menuButtonNavigator(
+                    context: context,
+                    stringRouteName: "/bildungsübersicht",
+                  ),
+                  CommonWidgets.menuButtonNavigator(
+                    context: context,
+                    text: Text("Kontakt"),
+                  ),
+                  CommonWidgets.menuButtonNavigator(
+                    context: context,
+                    text: Text("News"),
+                  ),
+                ],
+              ),
           ),
-        ),
+          ),
+       
       ],
     );
   }

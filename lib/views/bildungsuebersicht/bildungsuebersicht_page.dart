@@ -27,12 +27,23 @@ class Bildungsuebersicht extends StatelessWidget {
         ),
         Expanded(
           flex: 2,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              CommonWidgets.menuEntry(context: context,
-              text: Text("data"))
-            ],
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                CommonWidgets.menuButtonNavigator(
+                  context: context,
+                  text: Text("Nur Relavante"),
+                  outerPadding: EdgeInsets.all(0)
+                ),
+                CommonWidgets.menuButtonNavigator(
+                  context: context,
+                  text: Text("Alle Bildungsangebote"),
+                  outerPadding: EdgeInsets.all(0)
+                )
+              ],
+            ),
           ),
         )
       ],

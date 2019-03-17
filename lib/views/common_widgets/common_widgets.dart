@@ -189,26 +189,38 @@ Widget _conditionalWidget({Widget widget, @required bool contition()}) {
   }
 }
 
-Widget menuEntry(
+Widget menuButtonNavigator(
     {@required BuildContext context,
     String stringRouteName = "/404",
-    Text text}) {
+    Text text,
+    //will ich nur für space unter button benutzen
+    EdgeInsets outerPadding}) {
   if (text == null) {
     text = Text("--- NOT SET ---");
   }
-  return new Row(
-    children: <Widget>[
-      Expanded(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.of(context).pushNamed(stringRouteName);
-          },
-          child: text,
-          splashColor: Theme.of(context).primaryColor,
-          highlightColor: Colors.transparent,
-          color: Theme.of(context).backgroundColor,
+  if (outerPadding == null) {
+    outerPadding = EdgeInsets.fromLTRB(0, 0, 0, 40);
+  }
+  return Padding(
+    padding: outerPadding,
+    child: new Row(
+      children: <Widget>[
+        Expanded(
+          child: RaisedButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(stringRouteName);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: text,
+            ),
+            splashColor: Theme.of(context).primaryColor,
+            highlightColor: Colors.transparent,
+            color: Theme.of(context).backgroundColor,
+            shape: Border.all(color: Theme.of(context).primaryColor,width: 0.6),
+          ),
         ),
-      ),
-    ],
+      ],
+    ),
   );
 }
