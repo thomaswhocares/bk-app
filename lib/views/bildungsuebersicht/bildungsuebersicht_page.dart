@@ -33,10 +33,12 @@ class Bildungsuebersicht extends StatelessWidget {
                   Expanded(
                       child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Text("Themenbereiche"),
-                    )],
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text("Themenbereiche"),
+                      )
+                    ],
                   ))
                 ],
               ),
