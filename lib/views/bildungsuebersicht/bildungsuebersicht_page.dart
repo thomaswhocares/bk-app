@@ -14,8 +14,32 @@ class Bildungsuebersicht extends StatelessWidget {
         Expanded(
             flex: 1,
             child: Container(
-              decoration: BoxDecoration(border: Border.all(color: Theme.of(context).primaryColor), ),
-
+              decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).primaryColor),
+              ),
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Text("Bildungsgänge"),
+                        )
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                      child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text("Themenbereiche"),
+                    )],
+                  ))
+                ],
+              ),
             )),
       ],
     );
