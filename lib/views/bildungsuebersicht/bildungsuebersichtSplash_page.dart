@@ -44,11 +44,7 @@ class BildungsuebersichtSplash extends StatelessWidget {
                     outerPadding: EdgeInsets.all(0)),
                 Row(
                   children: <Widget>[
-                    Transform.scale(
-                      scale: 2,
-                      child: _CheckboxDingens(),
-                    ),
-                    Text("Nicht nochmal fragen.")
+                    _CheckboxDingens(),
                   ],
                 )
               ],
@@ -59,6 +55,7 @@ class BildungsuebersichtSplash extends StatelessWidget {
     );
   }
 }
+
 // TODO JUST FOR EXAPLE
 class _CheckboxDingens extends StatefulWidget {
   @override
@@ -67,8 +64,8 @@ class _CheckboxDingens extends StatefulWidget {
 
 class _CheckboxDingensState extends State<_CheckboxDingens> {
   bool f = false;
-  
-  void onClick(bool change){
+
+  void onClick() {
     setState(() {
       f = !f;
     });
@@ -76,14 +73,24 @@ class _CheckboxDingensState extends State<_CheckboxDingens> {
 
   @override
   Widget build(BuildContext context) {
-    return Checkbox(
-      value: f,
-      tristate: true,
-      
-      onChanged: (bool changed) {
-        onClick(changed);
-      },
-      materialTapTargetSize: MaterialTapTargetSize.padded,
+    return Row(
+      children: <Widget>[
+        Transform.scale(
+          scale: 2,
+          child: Checkbox(
+            value: f,
+            tristate: true,
+            onChanged: (bool changed) {
+              onClick();
+            },
+            materialTapTargetSize: MaterialTapTargetSize.padded,
+          ),
+        ),
+        RaisedButton(
+          onPressed: () {onClick();},
+          child: Text("Nicht nochmal fragen."),
+        )
+      ],
     );
   }
 }
