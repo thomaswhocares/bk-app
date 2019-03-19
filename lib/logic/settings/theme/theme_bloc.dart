@@ -1,6 +1,6 @@
 import 'package:bkapp/logic/singleton.dart' as Singletons;
-import 'package:bkapp/logic/theme/theme_change_event.dart';
-import 'package:bkapp/logic/theme/theme_state.dart';
+import 'package:bkapp/logic/settings/theme/theme_change_event.dart';
+import 'package:bkapp/logic/settings/theme/theme_state.dart';
 import 'package:bloc/bloc.dart';
 import 'dart:convert';
 
