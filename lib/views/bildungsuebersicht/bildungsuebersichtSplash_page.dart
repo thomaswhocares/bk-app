@@ -3,7 +3,6 @@ import 'package:bkapp/views/common_widgets/common_widgets.dart'
 import 'package:flutter/material.dart';
 
 class BildungsuebersichtSplash extends StatelessWidget {
-  bool f = false;
   @override
   Widget build(BuildContext context) {
     return CommonWidgets.CommonPageCollumStyle(
