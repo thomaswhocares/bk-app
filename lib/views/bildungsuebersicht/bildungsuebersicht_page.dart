@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:core';
 import 'package:bkapp/views/common_widgets/common_widgets.dart'
     as CommonWidgets;
 
@@ -24,9 +25,16 @@ class Bildungsuebersicht extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.all(15),
-                          child: Text("Bildungsgänge"),
-                        )
+                          padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
+                          child: Container(
+                            color: Theme.of(context).hintColor,
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
+                              child: Text("Bildungsgänge:"),
+                            ),
+                          ),
+                        ),
+                        _tagBubble(context, Colors.orangeAccent, "end mdsfdsfsdfde")
                       ],
                     ),
                   ),
@@ -44,6 +52,29 @@ class Bildungsuebersicht extends StatelessWidget {
               ),
             )),
       ],
+    );
+  }
+
+  Widget _tagBubble(
+    BuildContext context,
+    Color color,
+    String text,
+  ) {
+    Text textWidget = new Text(
+      text,
+      style: TextStyle(
+        color: Theme.of(context).backgroundColor,
+      ),
+      textAlign: TextAlign.center,
+    );
+
+    return FlatButton(
+      color: color,
+      disabledColor: Colors.grey,
+      onPressed: (){},
+      child: textWidget,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(200))),
     );
   }
 }
