@@ -79,7 +79,10 @@ class CommonPageCollumStyle extends StatelessWidget {
             ),
           ),
           backgroundColor: Theme.of(context).backgroundColor,
-          body: Column(children: pageContent),
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(children: pageContent),
+          ),
         ),
       ),
     );

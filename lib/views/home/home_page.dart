@@ -1,5 +1,7 @@
 //system
+import 'package:bkapp/logic/bildungsuebersicht/bildungsuebersicht_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bkapp/views/common_widgets/common_widgets.dart'
     as CommonWidgets;
@@ -32,29 +34,42 @@ class Homepage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(30),
             child: Column(
-                children: <Widget>[
-                  CommonWidgets.menuButtonNavigator(
-                    context: context,
-                    stringRouteName: "/bildungsübersichtSpash",
-                    text: Text("Bildungsübersicht"),
-                  ),
-                  CommonWidgets.menuButtonNavigator(
-                    context: context,
-                    stringRouteName: "/bildungsübersicht",
-                  ),
-                  CommonWidgets.menuButtonNavigator(
-                    context: context,
-                    text: Text("Kontakt"),
-                  ),
-                  CommonWidgets.menuButtonNavigator(
-                    context: context,
-                    text: Text("News"),
-                  ),
-                ],
-              ),
+              children: <Widget>[
+                BlocBuilder(
+                  bloc: BlocProvider.of<BildungsuebersichtBloc>(context),
+                  builder:
+                      (BuildContext context, BildungsuebersichtState state) {
+                    if (state.dontShowAgain == true) {
+                      return CommonWidgets.menuButtonNavigator(
+                        context: context,
+                        text: Text("Bildungsübersicht"),
+                        stringRouteName: "/bildungsuebersicht",
+                      );
+                    } else {
+                      return CommonWidgets.menuButtonNavigator(
+                        context: context,
+                        text: Text("Bildungsübersicht"),
+                        stringRouteName: "/bildungsübersichtSpash",
+                      );
+                    }
+                  },
+                ),
+                CommonWidgets.menuButtonNavigator(
+                  context: context,
+                  stringRouteName: "/bildungsübersicht",
+                ),
+                CommonWidgets.menuButtonNavigator(
+                  context: context,
+                  text: Text("Kontakt"),
+                ),
+                CommonWidgets.menuButtonNavigator(
+                  context: context,
+                  text: Text("News"),
+                ),
+              ],
+            ),
           ),
-          ),
-       
+        ),
       ],
     );
   }
