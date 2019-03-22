@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bkapp/logic/settings/theme/theme_bloc.dart';
 import 'package:bkapp/logic/settings/theme/theme_state.dart';
+import 'package:bkapp/logic/bildungsuebersicht/bildungsuebersicht_bloc.dart';
 import 'package:bkapp/views/home/home_page.dart';
 import 'package:bkapp/views/settings/settings_page.dart';
 import 'package:bkapp/views/bildungsuebersicht/bildungsuebersichtSplash_page.dart';
@@ -20,17 +21,26 @@ void main() async {
   runApp(SettingThemeBloc());
 }
 
-//---------------------Adds a top level widget that allows themeState----------------------------
+//---------------------Adds a top level widget that allows acces to all BLOC's----------------------------
 class SettingThemeBloc extends StatefulWidget {
+  SettingThemeBloc({Key key}) : super(key: key);
   @override
   State<StatefulWidget> createState() => SettingThemeBlocState();
 }
 
 class SettingThemeBlocState extends State<SettingThemeBloc> {
   final _themeBloc = ThemeBloc();
+  final _bildungsuebersichtBloc = BildungsuebersichtBloc();
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(bloc: _themeBloc, child: MyApp());
+    return BlocProviderTree(
+      blocProviders: [
+        BlocProvider<BildungsuebersichtBloc>(bloc: _bildungsuebersichtBloc),
+        BlocProvider<ThemeBloc>(bloc: _themeBloc),
+        
+      ],
+      child: MyApp(),
+    );
   }
 
   @override
@@ -42,8 +52,6 @@ class SettingThemeBlocState extends State<SettingThemeBloc> {
 //-------------------------------------------------------------------
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder(

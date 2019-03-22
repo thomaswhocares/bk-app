@@ -1,6 +1,8 @@
 import 'package:bkapp/views/common_widgets/common_widgets.dart'
     as CommonWidgets;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bkapp/logic/bildungsuebersicht/bildungsuebersicht_bloc.dart';
 
 class BildungsuebersichtSplash extends StatelessWidget {
   @override
@@ -41,9 +43,9 @@ class BildungsuebersichtSplash extends StatelessWidget {
                     text: Text("Alle Bildungsangebote"),
                     stringRouteName: "/bildungsuebersicht",
                     outerPadding: EdgeInsets.all(0)),
-                Row(children: <Widget>[
-                  CheckboxButton()
-                ],)
+                Row(
+                  children: <Widget>[ShowAgainToggle()],
+                )
               ],
             ),
           ),
@@ -53,52 +55,33 @@ class BildungsuebersichtSplash extends StatelessWidget {
   }
 }
 
-
-
-
-
-//TODO braucht verbindung
-class CheckboxButton extends StatefulWidget {
-  CheckboxButton({Key key}) : super(key: key);
-
-  _CheckboxButtonState createState() => _CheckboxButtonState();
-}
-
-class _CheckboxButtonState extends State<CheckboxButton> {
+class ShowAgainToggle extends StatelessWidget {
   @override
-  bool f = false;
-
-  void onClick() {
-    setState(() {
-      f = !f;
-    });
-  }
-
   Widget build(BuildContext context) {
-    return RaisedButton(
-      shape: Border.all(color: Colors.transparent),
-      onPressed: () {
-        onClick();
-      },
-      child: Row(
-        children: <Widget>[
-          IgnorePointer(
-            child: Transform.scale(
-              scale: 1,
-              child: Checkbox(
-                value: f,
-                tristate: false,
-                onChanged: (bool changed) {
-                  onClick();
-                },
-                materialTapTargetSize: MaterialTapTargetSize.padded,
+    return BlocBuilder(
+      bloc: BlocProvider.of<BildungsuebersichtBloc>(context),
+      builder: (BuildContext context, BildungsuebersichtState state) {
+        return RaisedButton(
+          shape: Border.all(color: Colors.transparent),
+          onPressed: () {
+            BlocProvider.of<BildungsuebersichtBloc>(context)
+                .dispatch(BildungsuebersichtToggleShowAgain());
+          },
+          child: Row(
+            children: <Widget>[
+              IgnorePointer(
+                child: Checkbox(
+                  value: state.dontShowAgain,
+                  tristate: false,
+                  onChanged: (bool changed) {},
+                  materialTapTargetSize: MaterialTapTargetSize.padded,
+                ),
               ),
-            ),
+              Text("Nicht nochmal fragen.")
+            ],
           ),
-          Text("Nicht nochmal fragen.")
-        ],
-      ),
+        );
+      },
     );
   }
 }
-
