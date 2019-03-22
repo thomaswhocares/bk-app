@@ -1,29 +1,27 @@
 import 'package:bkapp/logic/singleton.dart' as Singletons;
+import 'dart:convert';
 import 'package:bkapp/logic/settings/theme/theme_change_event.dart';
 import 'package:bkapp/logic/settings/theme/theme_state.dart';
 import 'package:bloc/bloc.dart';
-import 'dart:convert';
 
-class ThemeBloc extends Bloc<ThemeChangeEvent, ThemeState> {
+class ThemeBloc extends Bloc<ChangeThemeEvent, ThemeState> {
   @override
   ThemeState get initialState {
-    ThemeState initial;
     try {
-      initial = ThemeState.fromJson(json.decode(
+      return ThemeState.fromJson(json.decode(
           Singletons.SharedPreferenceProvider()
               .sharedPreferences
               .getString('theme')));
     } catch (e) {
       print(e);
-      initial = ThemeState.dark();
+      return ThemeState.dark();
     }
-    return initial;
   }
 
   @override
   Stream<ThemeState> mapEventToState(
     ThemeState currentState,
-    ThemeChangeEvent event,
+    ChangeThemeEvent event,
   ) async* {
     if (event is ChangeDarkTheme) {
       ThemeState themeState = ThemeState.dark();

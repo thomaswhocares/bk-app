@@ -1,5 +1,5 @@
-abstract class ThemeChangeEvent{}
+abstract class ChangeThemeEvent{}
 
-class ChangeDarkTheme extends ThemeChangeEvent {}
+class ChangeDarkTheme extends ChangeThemeEvent {}
 
-class ChangeLightTheme extends ThemeChangeEvent {}
+class ChangeLightTheme extends ChangeThemeEvent {}
