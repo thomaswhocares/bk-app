@@ -4,6 +4,7 @@ import 'package:bkapp/views/common_widgets/common_widgets.dart'
     as CommonWidgets;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bkapp/logic/singleton.dart' as Singletons;
 
 class SettingsPage extends StatefulWidget {
   SettingsPage({Key key}) : super(key: key);
@@ -52,7 +53,16 @@ class SettingsPageState extends State<SettingsPage> {
               ),
             )
           ],
-        )
+        ),
+        Row(
+          children: <Widget>[
+            Expanded(child: RaisedButton(
+              child: Text("APP Speicher löschen"),
+              onPressed: (){
+                Singletons.SharedPreferenceProvider().sharedPreferences.clear();
+              },
+            )),
+        ],)
       ],
     );
   }
