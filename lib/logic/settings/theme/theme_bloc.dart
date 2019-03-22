@@ -13,7 +13,8 @@ class ThemeBloc extends Bloc<ChangeThemeEvent, ThemeState> {
               .sharedPreferences
               .getString('theme')));
     } catch (e) {
-      print(e);
+      print("Could not load Setting ThemeState from sharedPreferences thats normal if no setting has been set. \n" +
+              e.toString());
       return ThemeState.dark();
     }
   }
