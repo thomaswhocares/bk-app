@@ -41,11 +41,9 @@ class BildungsuebersichtSplash extends StatelessWidget {
                     text: Text("Alle Bildungsangebote"),
                     stringRouteName: "/bildungsuebersicht",
                     outerPadding: EdgeInsets.all(0)),
-                Row(
-                  children: <Widget>[
-                    _CheckboxDingens(),
-                  ],
-                )
+                Row(children: <Widget>[
+                  CheckboxButton()
+                ],)
               ],
             ),
           ),
@@ -55,13 +53,15 @@ class BildungsuebersichtSplash extends StatelessWidget {
   }
 }
 
-// TODO JUST FOR EXAPLE
-class _CheckboxDingens extends StatefulWidget {
-  @override
-  _CheckboxDingensState createState() => _CheckboxDingensState();
+//TODO braucht verbindung
+class CheckboxButton extends StatefulWidget {
+  CheckboxButton({Key key}) : super(key: key);
+
+  _CheckboxButtonState createState() => _CheckboxButtonState();
 }
 
-class _CheckboxDingensState extends State<_CheckboxDingens> {
+class _CheckboxButtonState extends State<CheckboxButton> {
+  @override
   bool f = false;
 
   void onClick() {
@@ -70,27 +70,31 @@ class _CheckboxDingensState extends State<_CheckboxDingens> {
     });
   }
 
-  @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Transform.scale(
-          scale: 2,
-          child: Checkbox(
-            value: f,
-            tristate: true,
-            onChanged: (bool changed) {
-              onClick();
-            },
-            materialTapTargetSize: MaterialTapTargetSize.padded,
+    return RaisedButton(
+      shape: Border.all(color: Colors.transparent),
+      onPressed: () {
+        onClick();
+      },
+      child: Row(
+        children: <Widget>[
+          IgnorePointer(
+            child: Transform.scale(
+              scale: 1,
+              child: Checkbox(
+                value: f,
+                tristate: false,
+                onChanged: (bool changed) {
+                  onClick();
+                },
+                materialTapTargetSize: MaterialTapTargetSize.padded,
+              ),
+            ),
           ),
-        ),
-        RaisedButton(
-          onPressed: () {onClick();},
-          child: Text("Nicht nochmal fragen."),
-        )
-      ],
+          Text("Nicht nochmal fragen.")
+        ],
+      ),
     );
   }
 }
-//-- END TODO
+
