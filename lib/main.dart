@@ -15,27 +15,22 @@ import 'package:bkapp/views/bildungsuebersicht/bildungsuebersichtSplash_page.dar
 import 'package:bkapp/views/bildungsuebersicht/bildungsuebersicht_page.dart';
 import 'package:bkapp/logic/singleton.dart';
 
-void main() async{
+void main() async {
   await SharedPreferenceProvider().init();
-  runApp(TopBlocProvider(child: MyApp()));
+  runApp(SettingThemeBloc());
 }
 
 //---------------------Adds a top level widget that allows themeState----------------------------
-class TopBlocProvider extends StatefulWidget {
-  final Widget child;
-
-  TopBlocProvider({@required this.child});
+class SettingThemeBloc extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => TopBlocProviderState(child);
+  State<StatefulWidget> createState() => SettingThemeBlocState();
 }
 
-class TopBlocProviderState extends State<TopBlocProvider> {
-  Widget child;
-  TopBlocProviderState(this.child);
+class SettingThemeBlocState extends State<SettingThemeBloc> {
   final _themeBloc = ThemeBloc();
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(bloc: _themeBloc, child: child);
+    return BlocProvider(bloc: _themeBloc, child: MyApp());
   }
 
   @override
@@ -45,7 +40,6 @@ class TopBlocProviderState extends State<TopBlocProvider> {
   }
 }
 //-------------------------------------------------------------------
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
@@ -80,7 +74,8 @@ class MyApp extends StatelessWidget {
           routes: <String, WidgetBuilder>{
             "/bildungsübersichtSpash": (BuildContext context) =>
                 new BildungsuebersichtSplash(),
-            "/bildungsuebersicht": (BuildContext context) => new Bildungsuebersicht(),
+            "/bildungsuebersicht": (BuildContext context) =>
+                new Bildungsuebersicht(),
             "/settings_page": (BuildContext context) => new SettingsPage(),
             "/profile": (BuildContext context) => new ProfilePage(),
             "/404": (BuildContext context) => new ErrorPage()
@@ -105,4 +100,3 @@ class ErrorPage extends StatelessWidget {
     );
   }
 }
-
