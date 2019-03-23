@@ -12,7 +12,7 @@ class ProfilePage extends StatelessWidget {
       //Common Page ist bereits eine Spallte deswegen kommen nurnoch reihen und andere objekte dazu
       children: <Widget>[
         Expanded(
-          flex: 2,
+          flex: 1,
           child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
               return RaisedButton(
@@ -36,10 +36,58 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
         Expanded(
-          flex: 5,
-          child: Text("data"),
+          flex: 3,
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text("Bisheriger Abschluss:"),
+                  ),
+                  ButtonTest(),
+                ],
+              )
+            ],
+          ),
         )
       ],
+    );
+  }
+}
+
+class ButtonTest extends StatefulWidget {
+  ButtonTest({Key key}) : super(key: key);
+
+  _ButtonTestState createState() => _ButtonTestState();
+}
+
+class _ButtonTestState extends State<ButtonTest> {
+  var dropdownValue;
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: dropdownValue,
+      onChanged: (String newValue) {
+        setState(() {
+          dropdownValue = newValue;
+        });
+      },
+      items: <String>[
+        'Hauptschulabschluss nach Klasse 9',
+        'Hauptschulabschluss nach Klasse 10',
+        'Fachoberschulreife (FOR)',
+        'Fachhochschulreife (FHR)',
+        'Fachabitur',
+        'Allgemeine Hochschulreife (AHR)',
+        'Abitur',
+        'Techniker (staatlich geprüfter Techniker)',
+      ].map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
     );
   }
 }
