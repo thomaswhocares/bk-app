@@ -16,15 +16,26 @@ class Homepage extends StatelessWidget {
           child: Column(children: <Widget>[
             //Obere menü buttons;
             Expanded(
-              child: RaisedButton(
-                color: Colors.transparent,
-                elevation: 0,
-                shape: CircleBorder(side: BorderSide(style: BorderStyle.none)),
-                onPressed: () {},
-                highlightColor: Colors.transparent,
-                child: SvgPicture.asset(
-                  'assets/gut_logo.svg',
-                ),
+              child: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+                  return RaisedButton(
+                    //We do not need inner padding
+                    padding: EdgeInsets.all(0),
+                    shape:
+                        CircleBorder(side: BorderSide(style: BorderStyle.none)),
+                    onPressed: () {},
+                    child: Container(
+                      width: constraints.maxHeight,
+                      height: constraints.maxHeight,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                      ),
+                      child: SvgPicture.asset(
+                        'assets/gut_logo.svg',
+                      ),
+                    ),
+                  );
+                },
               ),
             )
           ]),
@@ -55,7 +66,7 @@ class Homepage extends StatelessWidget {
                 ),
                 CommonWidgets.menuButtonNavigator(
                   context: context,
-                  text: Text("Debug link (/bildungsübersichtSpash           )"),
+                  text: Text("Debug link (/bildungsübersichtSplash)"),
                   stringRouteName: "/bildungsübersichtSpash",
                 ),
                 CommonWidgets.menuButtonNavigator(

@@ -1,28 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 
-/*
-class CommonPage extends StatelessWidget {
-
-  Widget child;
-  CommonPage(this.child);
-
-  Widget build(BuildContext context) {
-    // implement build
-    return BlocBuilder(
-      bloc: BlocProvider.of<ThemeBloc>(context),
-      builder: (context, ThemeState state) { 
-        return Container(
-          color: state.themeData.backgroundColor,
-          child: child
-        );
-        }
-    );
-  }
-}
-*/
 enum ViewType { settingsView, profileView, homepage, blank, bildungsuebersicht }
-/* Settings und profile view haben besonderheiten beim Header, blank homepage und bildungsbereiche sind noch gleich*/
+/* Settings und profile view haben besonderheiten beim Headerbar, blank homepage und bildungsbereiche sind noch gleich*/
 
 class CommonPageCollumStyle extends StatelessWidget {
   final List<Widget> children;
