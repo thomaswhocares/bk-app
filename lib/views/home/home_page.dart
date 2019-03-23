@@ -55,7 +55,8 @@ class Homepage extends StatelessWidget {
                 ),
                 CommonWidgets.menuButtonNavigator(
                   context: context,
-                  stringRouteName: "/bildungsübersicht",
+                  text: Text("Debug link (/bildungsübersichtSpash           )"),
+                  stringRouteName: "/bildungsübersichtSpash",
                 ),
                 CommonWidgets.menuButtonNavigator(
                   context: context,
