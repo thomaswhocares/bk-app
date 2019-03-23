@@ -39,19 +39,18 @@ class Homepage extends StatelessWidget {
                   bloc: BlocProvider.of<BildungsuebersichtBloc>(context),
                   builder:
                       (BuildContext context, BildungsuebersichtState state) {
-                    if (state.dontShowAgain == true) {
-                      return CommonWidgets.menuButtonNavigator(
-                        context: context,
-                        text: Text("Bildungsübersicht"),
-                        stringRouteName: "/bildungsuebersicht",
-                      );
-                    } else {
-                      return CommonWidgets.menuButtonNavigator(
-                        context: context,
-                        text: Text("Bildungsübersicht"),
-                        stringRouteName: "/bildungsübersichtSpash",
-                      );
-                    }
+                    // Bildungsübersicht SplashScreen wird nicht verlinkt wenn dontShowAgain true
+                    return state.dontShowAgain == true
+                        ? CommonWidgets.menuButtonNavigator(
+                            context: context,
+                            text: Text("Bildungsübersicht"),
+                            stringRouteName: "/bildungsuebersicht",
+                          )
+                        : CommonWidgets.menuButtonNavigator(
+                            context: context,
+                            text: Text("Bildungsübersicht"),
+                            stringRouteName: "/bildungsübersichtSpash",
+                          );
                   },
                 ),
                 CommonWidgets.menuButtonNavigator(
