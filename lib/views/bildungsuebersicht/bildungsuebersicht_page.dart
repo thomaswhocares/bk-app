@@ -6,24 +6,103 @@ import 'package:bkapp/views/common_widgets/common_widgets.dart'
 class Bildungsuebersicht extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<String> bildungsgangNames = [
-      'Hauptschulabschluss nach Klasse 9',
-      'Hauptschulabschluss nach Klasse 10',
-      'Fachoberschulreife (FOR)',
-      'Fachhochschulreife (FHR)',
-      'Fachabitur',
-      'Allgemeine Hochschulreife (AHR)',
-      'Abitur',
-      'Techniker (staatlich geprüfter Techniker)'
-    ];
+    var bildungsGaenge = Map();
+
+    var bubble1 =Map();
+
+    bildungsGaenge[0] = {
+      'name': 'Hauptschulabschluss nach Klasse 9',
+      bubble1[0]: {
+        'text' : "Technik",
+        'color': Colors.blue,
+      },
+      
+    };
+    bildungsGaenge[1] = {
+      'name': 'Hauptschulabschluss nach Klasse 10',
+      'bubble'[0]: {
+        'text' : "Technik",
+        'color': Colors.blue,
+      },
+      'bubble'[1]: {
+        'text' : "Gestaktung",
+        'color': Color.fromARGB(255, 226, 0, 122),
+      }
+    };
+    bildungsGaenge[2] = {
+      'name': 'Fachoberschulreife (FOR)',
+      'bubble'[0]: {
+        'text' : "Technik",
+        'color': Colors.blue,
+      },
+      'bubble'[1]: {
+        'text' : "Gestaktung",
+        'color': Color.fromARGB(255, 226, 0, 122),
+      }
+    };
+    bildungsGaenge[3] = {
+      'name': 'Fachhochschulreife (FHR)',
+      'bubble'[0]: {
+        'text' : "Technik",
+        'color': Colors.blue,
+      },
+      'bubble'[1]: {
+        'text' : "Gestaktung",
+        'color': Color.fromARGB(255, 226, 0, 122),
+      }
+    };
+    bildungsGaenge[4] = {
+      'name': 'Fachabitur',
+      'bubble'[0]: {
+        'text' : "Technik",
+        'color': Colors.blue,
+      },
+      'bubble'[1]: {
+        'text' : "Gestaktung",
+        'color': Color.fromARGB(255, 226, 0, 122),
+      }
+    };
+    bildungsGaenge[5] = {
+      'name': 'Allgemeine Hochschulreife (AHR)',
+      'bubble'[0]: {
+        'text' : "Technik",
+        'color': Colors.blue,
+      },
+      'bubble'[1]: {
+        'text' : "Gestaktung",
+        'color': Color.fromARGB(255, 226, 0, 122),
+      }
+    };
+    bildungsGaenge[6] = {
+      'name': 'Abitur',
+      'bubble'[0]: {
+        'text' : "Technik",
+        'color': Colors.blue,
+      },
+      'bubble'[1]: {
+        'text' : "Gestaktung",
+        'color': Color.fromARGB(255, 226, 0, 122),
+      }
+    };
+    bildungsGaenge[6] = {
+      'name': 'Techniker (staatlich geprüfter Techniker)',
+      'bubble'[0]: {
+        'text' : "Technik",
+        'color': Colors.blue,
+      },
+      'bubble'[1]: {
+        'text' : "Gestaktung",
+        'color': Color.fromARGB(255, 226, 0, 122),
+      }
+    };
 
     return CommonWidgets.CommonPageCollumStyle(
       children: <Widget>[
         Expanded(
           flex: 2,
           child: ListView.builder(
-            itemCount: bildungsgangNames.length,
-            itemBuilder: (BuildContext context, int index) {
+            itemCount: bildungsGaenge.length,
+            itemBuilder: (BuildContext context, int indexBildungsgang) {
               return Padding(
                   padding: EdgeInsets.all(10),
                   child: Container(
@@ -34,7 +113,7 @@ class Bildungsuebersicht extends StatelessWidget {
                           children: <Widget>[
                             Row(
                               children: <Widget>[
-                                Text(bildungsgangNames[index])
+                                Text(bildungsGaenge[indexBildungsgang]['name'])
                               ],
                             ),
                             LayoutBuilder(
@@ -42,18 +121,18 @@ class Bildungsuebersicht extends StatelessWidget {
                                   BoxConstraints constraints) {
                                 return Container(
                                   width: constraints.maxWidth,
-                                  height: constraints.maxWidth/6,
+                                  height: constraints.maxWidth / 6,
                                   child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
-                                      itemCount: 900,
+                                      itemCount: bildungsGaenge[indexBildungsgang][bubble1].length,
                                       itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return Text("heh ");
+                                          (BuildContext context, int indexBubble) {
+                                        return Container(child: Text(bildungsGaenge[indexBildungsgang]['bubble'[indexBubble]]['text']),);
                                       }),
                                 );
                               },
                             ),
-                            /**/
+                            
                           ],
                         ),
                       )));
