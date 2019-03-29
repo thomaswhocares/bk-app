@@ -8,95 +8,95 @@ class Bildungsuebersicht extends StatelessWidget {
   Widget build(BuildContext context) {
     var bildungsGaenge = Map();
 
-    var bubble1 =Map();
+    var bubble1 = Map();
 
     bildungsGaenge[0] = {
       'name': 'Hauptschulabschluss nach Klasse 9',
       bubble1[0]: {
-        'text' : "Technik",
+        'text': "Technik",
         'color': Colors.blue,
       },
-      
     };
     bildungsGaenge[1] = {
       'name': 'Hauptschulabschluss nach Klasse 10',
       'bubble'[0]: {
-        'text' : "Technik",
+        'text': "Technik",
         'color': Colors.blue,
       },
       'bubble'[1]: {
-        'text' : "Gestaktung",
+        'text': "Gestaktung",
         'color': Color.fromARGB(255, 226, 0, 122),
       }
     };
     bildungsGaenge[2] = {
       'name': 'Fachoberschulreife (FOR)',
       'bubble'[0]: {
-        'text' : "Technik",
+        'text': "Technik",
         'color': Colors.blue,
       },
       'bubble'[1]: {
-        'text' : "Gestaktung",
+        'text': "Gestaktung",
         'color': Color.fromARGB(255, 226, 0, 122),
       }
     };
     bildungsGaenge[3] = {
       'name': 'Fachhochschulreife (FHR)',
       'bubble'[0]: {
-        'text' : "Technik",
+        'text': "Technik",
         'color': Colors.blue,
       },
       'bubble'[1]: {
-        'text' : "Gestaktung",
+        'text': "Gestaktung",
         'color': Color.fromARGB(255, 226, 0, 122),
       }
     };
     bildungsGaenge[4] = {
       'name': 'Fachabitur',
       'bubble'[0]: {
-        'text' : "Technik",
+        'text': "Technik",
         'color': Colors.blue,
       },
       'bubble'[1]: {
-        'text' : "Gestaktung",
+        'text': "Gestaktung",
         'color': Color.fromARGB(255, 226, 0, 122),
       }
     };
     bildungsGaenge[5] = {
       'name': 'Allgemeine Hochschulreife (AHR)',
       'bubble'[0]: {
-        'text' : "Technik",
+        'text': "Technik",
         'color': Colors.blue,
       },
       'bubble'[1]: {
-        'text' : "Gestaktung",
+        'text': "Gestaktung",
         'color': Color.fromARGB(255, 226, 0, 122),
       }
     };
     bildungsGaenge[6] = {
       'name': 'Abitur',
       'bubble'[0]: {
-        'text' : "Technik",
+        'text': "Technik",
         'color': Colors.blue,
       },
       'bubble'[1]: {
-        'text' : "Gestaktung",
+        'text': "Gestaktung",
         'color': Color.fromARGB(255, 226, 0, 122),
       }
     };
     bildungsGaenge[6] = {
       'name': 'Techniker (staatlich geprüfter Techniker)',
       'bubble'[0]: {
-        'text' : "Technik",
+        'text': "Technik",
         'color': Colors.blue,
       },
       'bubble'[1]: {
-        'text' : "Gestaktung",
+        'text': "Gestaktung",
         'color': Color.fromARGB(255, 226, 0, 122),
       }
     };
 
     return CommonWidgets.CommonPageCollumStyle(
+      viewType: CommonWidgets.ViewType.bildungsuebersicht,
       children: <Widget>[
         Expanded(
           flex: 2,
@@ -124,15 +124,35 @@ class Bildungsuebersicht extends StatelessWidget {
                                   height: constraints.maxWidth / 6,
                                   child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
-                                      itemCount: bildungsGaenge[indexBildungsgang][bubble1].length,
-                                      itemBuilder:
-                                          (BuildContext context, int indexBubble) {
-                                        return Container(child: Text(bildungsGaenge[indexBildungsgang]['bubble'[indexBubble]]['text']),);
+                                      itemCount: 1,
+                                      itemBuilder: (BuildContext context,
+                                          int indexBubble) {
+                                        return Container(
+                                          child: Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                0, 5, 0, 0),
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Expanded(
+                                                    child: _tagBubble(
+                                                        context,
+                                                        Colors.blue,
+                                                        "Technik")),
+                                                Expanded(
+                                                  child: _tagBubble(
+                                                        context,
+                                                        Colors.deepPurple,
+                                                        "Gestaltung"),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        );
                                       }),
                                 );
                               },
                             ),
-                            
                           ],
                         ),
                       )));
@@ -154,7 +174,6 @@ class Bildungsuebersicht extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
                           child: Container(
-                            color: Theme.of(context).hintColor,
                             child: Padding(
                               padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
                               child: Text("Bildungsgänge:"),
@@ -162,7 +181,7 @@ class Bildungsuebersicht extends StatelessWidget {
                           ),
                         ),
                         _tagBubble(
-                            context, Colors.orangeAccent, "end mdsfdsfsdfde")
+                            context, Colors.orangeAccent, "Alle")
                       ],
                     ),
                   ),
@@ -173,7 +192,9 @@ class Bildungsuebersicht extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Text("Themenbereiche"),
-                      )
+                      ),
+                      _tagBubble(
+                            context, Colors.orangeAccent, "Alle")
                     ],
                   ))
                 ],
