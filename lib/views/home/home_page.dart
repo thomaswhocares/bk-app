@@ -21,6 +21,9 @@ class Homepage extends StatelessWidget {
                   return RaisedButton(
                     //We do not need inner padding
                     padding: EdgeInsets.all(0),
+                    splashColor: Colors.white,
+                    elevation: 0,
+                    
                     shape:
                         CircleBorder(side: BorderSide(style: BorderStyle.none)),
                     onPressed: () {},

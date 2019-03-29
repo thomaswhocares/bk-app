@@ -16,12 +16,12 @@ class BildungsuebersichtSplash extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  "Hey",
-                  textScaleFactor: 4,
+                  "Hi",
+                  textScaleFactor: 5,
                 ),
               ),
               Text(
-                "Do you come here often ?",
+                "Was interessiert dich ?",
                 textScaleFactor: 2,
               ),
             ],
